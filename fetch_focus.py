@@ -7,12 +7,17 @@ fetch_focus.py — KYY 종목 집중 모니터(FOCUS) 데이터 수집기
     · 재무(매출/영업이익/순이익/부채·유동비율 + 전년대비)  ← DART OpenAPI
     · 최근 30일 공시(쉬운 해설 자동 부착)                  ← DART OpenAPI list.json
     · 시세/등락/PER/PBR/외국인보유                          ← 네이버 모바일 금융(키 불필요)
-    · 최근 뉴스(규칙기반 한 줄 태그 요약)                    ← 네이버 종목 뉴스(키 불필요)
+    · 최근 뉴스(규칙기반 한 줄 태그 요약)                    ← 네이버 뉴스 검색 API(키 필요,
+      회사명 기준 검색으로 관련 기사만 정확히 수집. 키가 없거나 API 실패 시
+      네이버 종목 뉴스(키 불필요)로 자동 폴백)
   - 위를 focus 스키마(§4)의 배열로 만들어 data.json 으로 저장.
 
 필요 키:
-  - DART_API_KEY (환경변수). GitHub Actions에서는 Secrets 로 주입.
-    로컬 실행: PowerShell> $env:DART_API_KEY="..." ; python fetch_focus.py
+  - DART_API_KEY (환경변수, 필수). GitHub Actions에서는 Secrets 로 주입.
+  - NAVER_CLIENT_ID / NAVER_CLIENT_SECRET (환경변수, 권장). 네이버 뉴스
+    검색 API 인증용. 없으면 뉴스는 종목 뉴스 API로 폴백(관련도 필터는 동일 적용).
+    로컬 실행: PowerShell> $env:DART_API_KEY="..." ; $env:NAVER_CLIENT_ID="..." ;
+               $env:NAVER_CLIENT_SECRET="..." ; python fetch_focus.py
 
 주의:
   - 5개사 모두 사명 변경 이력 → 반드시 '종목코드' 기준 조회(회사명 매칭 금지).
@@ -31,6 +36,7 @@ import difflib
 import zipfile
 import datetime as dt
 import xml.etree.ElementTree as ET
+from email.utils import parsedate_to_datetime
 
 import requests
 
@@ -38,6 +44,8 @@ import requests
 # 0. 설정
 # ──────────────────────────────────────────────────────────────────────────
 DART_KEY = os.environ.get("DART_API_KEY", "").strip()
+NAVER_CLIENT_ID = os.environ.get("NAVER_CLIENT_ID", "").strip()
+NAVER_CLIENT_SECRET = os.environ.get("NAVER_CLIENT_SECRET", "").strip()
 
 UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
                     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36",
@@ -46,7 +54,8 @@ UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
 TIMEOUT = 12
 DISC_DAYS = 30            # 최근 공시 조회 범위(일)
 NEWS_COUNT = 4           # 회사당 최종 노출 뉴스 개수
-NEWS_FETCH = 15          # 정렬·중복제거 전 넉넉히 받아올 원본 뉴스 개수
+NEWS_FETCH = 15          # (폴백용) 종목 뉴스 API 원본 뉴스 개수
+NEWS_SEARCH_DISPLAY = 30  # 네이버 뉴스 검색 API 원본 수집 개수
 DISC_COUNT = 4           # 회사당 공시 개수
 OUT_PATH = os.path.join(os.path.dirname(__file__), "data.json")
 NOTES_PATH = os.path.join(os.path.dirname(__file__), "notes.json")  # 수기 코멘트(선택)
@@ -376,8 +385,10 @@ def fetch_naver_quote(code):
     return out
 
 # ──────────────────────────────────────────────────────────────────────────
-# 8. 네이버 종목 뉴스 — 제목 기반 규칙 요약 (키 불필요)
+# 8. 네이버 뉴스 — 회사명 기반 뉴스 검색 API(정확도 우선) + 종목 뉴스 폴백
 # ──────────────────────────────────────────────────────────────────────────
+NAVER_SEARCH_URL = "https://openapi.naver.com/v1/search/news.json"
+
 def _strip_tags(s):
     s = re.sub(r"<[^>]+>", "", s or "")
     return (s.replace("&quot;", '"').replace("&amp;", "&")
@@ -389,71 +400,150 @@ def _norm_date(s):
     return f"{m.group(1)}-{m.group(2)}-{m.group(3)}" if m else s[:10]
 
 def _norm_title_key(title):
-    """중복 비교용 정규화: 앞쪽 매체 태그([ET특징주] 등) 제거 + 공백·특수문자 제거."""
+    """중복 비교용 정규화: 앞쪽 매체 태그([단독]/[속보] 등) 제거 + 공백·특수문자 제거."""
     t = re.sub(r"^\[[^\]]{1,12}\]", "", title or "")
     t = re.sub(r"[^\w가-힣]", "", t)
     return t.strip().lower()
 
-def _is_dup_title(a, b):
-    """정규화된 제목 둘이 사실상 같은 기사(동일/유사 제목)인지 판단."""
+def _is_dup_title(a, b, threshold=0.8):
+    """정규화된 제목 둘의 difflib 유사도가 threshold 이상이면 같은 사건으로 간주."""
     if not a or not b:
         return False
     if a == b:
         return True
-    # 서로 다른 매체가 같은 사건을 다르게 표현해도 앞부분이 거의 같거나
-    # 전체적으로 매우 유사하면 중복으로 간주.
-    prefix_len = min(len(a), len(b), 14)
-    if prefix_len >= 8 and a[:prefix_len] == b[:prefix_len]:
-        return True
-    return difflib.SequenceMatcher(None, a, b).ratio() >= 0.72
+    return difflib.SequenceMatcher(None, a, b).ratio() >= threshold
 
-def fetch_naver_news(code):
-    out = []
+def _title_quality(title):
+    """중복 그룹에서 대표로 남길 기사 선택 점수.
+
+    제목이 길수록(더 구체적일 가능성) 우대하고, [속보]/[단독] 같은 말머리
+    태그나 "... - 매체명" 식 꼬리표가 많을수록 감점.
+    """
+    tag_count = len(re.findall(r"\[[^\]]{1,12}\]", title))
+    tail_tag = 1 if re.search(r"[\-\|]\s*[가-힣A-Za-z0-9]{2,12}$", title) else 0
+    return len(title) - tag_count * 8 - tail_tag * 6
+
+def _contains_company(text, name):
+    return bool(name) and name in (text or "")
+
+def _rfc822_to_date(pub_date):
+    """RFC822 pubDate 문자열 → ("YYYY-MM-DD", 정렬용 datetime)."""
     try:
-        js = _get(f"https://m.stock.naver.com/api/news/stock/{code}"
-                  f"?pageSize={NEWS_FETCH}&page=1&clusterId=").json()
-        # 응답은 [ {items:[...]}, ... ] 또는 [ {..기사..}, ... ] 형태 모두 대응
-        flat = []
-        data = js if isinstance(js, list) else js.get("items", js)
-        for grp in (data or []):
-            if isinstance(grp, dict) and isinstance(grp.get("items"), list):
-                flat.extend(grp["items"])
-            elif isinstance(grp, dict):
-                flat.append(grp)
+        d = parsedate_to_datetime(pub_date)
+        return d.strftime("%Y-%m-%d"), d
+    except Exception:
+        return _norm_date(pub_date), dt.datetime.min
 
-        items = []
-        for it in flat:
-            title = _strip_tags(it.get("title"))
-            if not title:
-                continue
-            raw_dt = str(it.get("datetime") or "")  # 예: "202606231303" (YYYYMMDDHHmm)
-            url = (it.get("mobileNewsUrl") or "").strip()
-            if not url:
-                oid, aid = it.get("officeId"), it.get("articleId")
-                if oid and aid:
-                    url = f"https://n.news.naver.com/mnews/article/{oid}/{aid}"
-            items.append({
-                "date": _norm_date(raw_dt or it.get("officeName") or ""),
-                "title": title, "sum": tag_news(title), "url": url,
-                "_sort": raw_dt,
-            })
-
-        # 최신순 정렬 — datetime이 YYYYMMDDHHmm 문자열이라 그대로 내림차순 비교 가능.
-        items.sort(key=lambda x: x["_sort"], reverse=True)
-
-        # 같은 사건을 다룬 중복(유사) 기사 제거 — 먼저 온(최신) 기사를 남긴다.
-        seen_keys = []
-        for it in items:
-            key = _norm_title_key(it["title"])
-            if any(_is_dup_title(key, s) for s in seen_keys):
-                continue
-            seen_keys.append(key)
-            it.pop("_sort", None)
-            out.append(it)
-            if len(out) >= NEWS_COUNT:
+def _dedup_articles(items):
+    """유사 제목(threshold=0.8)끼리 묶고, 그룹마다 가장 잘 다듬어진 기사만 남긴다."""
+    clusters = []  # [{"key": 정규화제목, "items": [...]}]
+    for it in items:
+        key = _norm_title_key(it["title"])
+        target = None
+        for c in clusters:
+            if _is_dup_title(key, c["key"]):
+                target = c
                 break
+        if target is None:
+            clusters.append({"key": key, "items": [it]})
+        else:
+            target["items"].append(it)
+    return [max(c["items"], key=lambda x: _title_quality(x["title"])) for c in clusters]
+
+def _search_naver_news_raw(query):
+    """네이버 뉴스 검색 API 호출. 인증 헤더 미설정 시 예외로 폴백 유도."""
+    if not (NAVER_CLIENT_ID and NAVER_CLIENT_SECRET):
+        raise RuntimeError("NAVER_CLIENT_ID/NAVER_CLIENT_SECRET 미설정")
+    headers = dict(UA)
+    headers.update({
+        "X-Naver-Client-Id": NAVER_CLIENT_ID,
+        "X-Naver-Client-Secret": NAVER_CLIENT_SECRET,
+    })
+    params = {"query": query, "display": NEWS_SEARCH_DISPLAY, "sort": "date"}
+    r = requests.get(NAVER_SEARCH_URL, headers=headers, params=params, timeout=TIMEOUT)
+    r.raise_for_status()
+    return r.json().get("items", [])
+
+def _normalize_search_item(raw, name):
+    """검색 API 원본 1건 → 공통 스키마. 회사명이 '제목'에 없으면 None(무관 기사 제외).
+
+    실측 결과 description(요약)만으로 매칭하면 오탐이 많았다: 요약 안에 계열사
+    이름이 나열식으로 언급되거나("...비투엔 등 계열사도"), 회사명이 흔한
+    인명/브랜드명과 겹치는 경우(예: '비비안')까지 걸려 들어왔다. 실제 관련
+    기사는 거의 항상 제목에 회사명이 들어가므로 제목 매칭만 채택해 정확도를
+    우선한다(재현율은 다소 희생 — 부족하면 종목 뉴스 폴백이 보완).
+    """
+    title = _strip_tags(raw.get("title"))
+    if not title or not _contains_company(title, name):
+        return None
+    date_str, sort_dt = _rfc822_to_date(raw.get("pubDate"))
+    url = (raw.get("originallink") or raw.get("link") or "").strip()
+    return {"date": date_str, "title": title, "sum": tag_news(title), "url": url, "_dt": sort_dt}
+
+def _fetch_stock_news_raw(code):
+    """네이버 종목 뉴스 API(비공식, 키 불필요) — 검색 API 실패 시 폴백 원본."""
+    js = _get(f"https://m.stock.naver.com/api/news/stock/{code}"
+              f"?pageSize={NEWS_FETCH}&page=1&clusterId=").json()
+    flat = []
+    data = js if isinstance(js, list) else js.get("items", js)
+    for grp in (data or []):
+        if isinstance(grp, dict) and isinstance(grp.get("items"), list):
+            flat.extend(grp["items"])
+        elif isinstance(grp, dict):
+            flat.append(grp)
+
+    out = []
+    for it in flat:
+        title = _strip_tags(it.get("title"))
+        if not title:
+            continue
+        raw_dt = str(it.get("datetime") or "")  # 예: "202606231303" (YYYYMMDDHHmm)
+        try:
+            sort_dt = dt.datetime.strptime(raw_dt, "%Y%m%d%H%M")
+        except ValueError:
+            sort_dt = dt.datetime.min
+        url = (it.get("mobileNewsUrl") or "").strip()
+        if not url:
+            oid, aid = it.get("officeId"), it.get("articleId")
+            if oid and aid:
+                url = f"https://n.news.naver.com/mnews/article/{oid}/{aid}"
+        out.append({"date": _norm_date(raw_dt), "title": title, "url": url, "_dt": sort_dt})
+    return out
+
+def fetch_naver_news(code, name):
+    """회사명 기준 네이버 뉴스 검색 API로 관련 기사만 수집.
+    키가 없거나 API 실패/무관 기사만 나오면 종목 뉴스 API로 폴백(회사명 필터는 동일 적용).
+
+    검색어에 "주가"를 덧붙인다 — 회사명만으로 검색하면 짧은 상호가 흔한 인명·
+    브랜드명과 겹치는 경우(예: '비비안'은 여성 속옷 브랜드이자 화가 이름과도
+    겹쳐 미술 전시 기사가 대량 유입됨) 제목 필터만으로는 걸러지지 않는 사례가
+    실측에서 확인됐다. "주가"를 더하면 증권·시황 문맥의 기사로 좁혀져 오탐이
+    크게 줄고, thebell 같은 소형주 전문 매체 기사도 함께 잡힌다.
+    """
+    items = []
+    try:
+        raw = _search_naver_news_raw(f"{name} 주가")
+        items = [n for n in (_normalize_search_item(r, name) for r in raw) if n]
+        if not items:
+            raise RuntimeError("검색 API 관련 기사 0건 → 폴백")
     except Exception as e:
-        print(f"  [warn] naver news {code}: {e}", file=sys.stderr)
+        print(f"  [warn] naver news-search {name}: {e} → 종목뉴스 폴백", file=sys.stderr)
+        try:
+            stock_raw = _fetch_stock_news_raw(code)
+            for it in stock_raw:
+                if _contains_company(it["title"], name):  # 폴백에도 회사명 필터 적용
+                    it["sum"] = tag_news(it["title"])
+                    items.append(it)
+        except Exception as e2:
+            print(f"  [warn] naver news fallback {code}: {e2}", file=sys.stderr)
+            items = []
+
+    reps = _dedup_articles(items)
+    reps.sort(key=lambda x: x["_dt"], reverse=True)
+    out = []
+    for it in reps[:NEWS_COUNT]:
+        it.pop("_dt", None)
+        out.append(it)
     return out
 
 # ──────────────────────────────────────────────────────────────────────────
@@ -475,7 +565,7 @@ def build_company(base, corp_map, notes):
     fin_block = fetch_financials(corp) if corp else None
     disc = fetch_disclosures(corp) if corp else []
     quote = fetch_naver_quote(code)
-    news = fetch_naver_news(code)
+    news = fetch_naver_news(code, base["name"])
 
     metrics = {
         "ROE": (fin_block or {}).get("ROE"),

@@ -33,6 +33,8 @@ jobs:
       - name: Fetch data
         env:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
+          NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
+          NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
         run: python fetch_focus.py
 
       - name: Commit if changed
