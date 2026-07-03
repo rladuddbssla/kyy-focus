@@ -1,0 +1,48 @@
+name: update-focus-data
+
+on:
+  schedule:
+    # 매시 정각(UTC=KST 동일 분). 정각은 러너가 혼잡해 수 분 지연될 수 있음(정상).
+    # 더 안정적으로 돌리려면 '7 * * * *' 처럼 분을 몇 분 뒤로 미루면 됩니다.
+    - cron: "0 * * * *"
+  workflow_dispatch:      # Actions 탭에서 수동 실행 버튼
+
+# data.json 을 커밋/푸시하기 위한 쓰기 권한
+permissions:
+  contents: write
+
+concurrency:              # 겹치는 실행 방지
+  group: focus-update
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Fetch data
+        env:
+          DART_API_KEY: ${{ secrets.DART_API_KEY }}
+        run: python fetch_focus.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- data.json; then
+            echo "변경 없음 → 커밋 생략"
+          else
+            git add data.json
+            git commit -m "chore: update data.json ($(date -u '+%Y-%m-%d %H:%MZ'))"
+            git push
+          fi
