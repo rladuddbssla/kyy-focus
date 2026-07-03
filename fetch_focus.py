@@ -27,6 +27,7 @@ import re
 import sys
 import json
 import time
+import difflib
 import zipfile
 import datetime as dt
 import xml.etree.ElementTree as ET
@@ -44,7 +45,8 @@ UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
 
 TIMEOUT = 12
 DISC_DAYS = 30            # 최근 공시 조회 범위(일)
-NEWS_COUNT = 4           # 회사당 뉴스 개수
+NEWS_COUNT = 4           # 회사당 최종 노출 뉴스 개수
+NEWS_FETCH = 15          # 정렬·중복제거 전 넉넉히 받아올 원본 뉴스 개수
 DISC_COUNT = 4           # 회사당 공시 개수
 OUT_PATH = os.path.join(os.path.dirname(__file__), "data.json")
 NOTES_PATH = os.path.join(os.path.dirname(__file__), "notes.json")  # 수기 코멘트(선택)
@@ -52,19 +54,19 @@ NOTES_PATH = os.path.join(os.path.dirname(__file__), "notes.json")  # 수기 코
 # 대상 5개사 — 코드 기준. name/tag/biz 는 표시용 기본값(수집 실패 시 그대로 사용).
 COMPANIES = [
     {"code": "002070", "market": "KOSPI",  "name": "비비안",
-     "tag": "트라이 최대주주",
+     "tag": "여성 이너웨어 · 자산가치주",
      "biz": "여성 이너웨어(속옷) 제조·유통 · 브랜드 비비안/샌디즈"},
     {"code": "078860", "market": "KOSDAQ", "name": "아이오케이이엔엠",
-     "tag": "구 스테이지원엔터",
+     "tag": "엔터·미디어 · 구조조정주",
      "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스"},
     {"code": "025620", "market": "KOSPI",  "name": "차AI헬스케어",
-     "tag": "구 제이준코스메틱",
+     "tag": "헬스케어 · AI/차바이오 테마",
      "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입"},
     {"code": "307870", "market": "KOSDAQ", "name": "비투엔",
-     "tag": "AI·데이터",
+     "tag": "AI·빅데이터 · 데이터/스테이블코인 테마",
      "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출"},
     {"code": "016670", "market": "KOSDAQ", "name": "디모아",
-     "tag": "IT·클라우드",
+     "tag": "IT·클라우드 · SI",
      "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)"},
 ]
 
@@ -220,8 +222,11 @@ def fetch_disclosures(corp_code):
             nm = (it.get("report_nm") or "").strip()
             d = it.get("rcept_dt", "")  # YYYYMMDD
             date = f"{d[:4]}-{d[4:6]}-{d[6:8]}" if len(d) == 8 else d
+            rcept_no = (it.get("rcept_no") or "").strip()
+            url = (f"https://dart.fss.or.kr/dsaf001/main.do?rcpNo={rcept_no}"
+                   if rcept_no else "")
             out.append({"date": date, "title": nm,
-                        "plain": explain_disclosure(nm)})
+                        "plain": explain_disclosure(nm), "url": url})
             if len(out) >= DISC_COUNT:
                 break
     return out
@@ -383,11 +388,30 @@ def _norm_date(s):
     m = re.search(r"(\d{4})[-.\s]?(\d{2})[-.\s]?(\d{2})", s)
     return f"{m.group(1)}-{m.group(2)}-{m.group(3)}" if m else s[:10]
 
+def _norm_title_key(title):
+    """중복 비교용 정규화: 앞쪽 매체 태그([ET특징주] 등) 제거 + 공백·특수문자 제거."""
+    t = re.sub(r"^\[[^\]]{1,12}\]", "", title or "")
+    t = re.sub(r"[^\w가-힣]", "", t)
+    return t.strip().lower()
+
+def _is_dup_title(a, b):
+    """정규화된 제목 둘이 사실상 같은 기사(동일/유사 제목)인지 판단."""
+    if not a or not b:
+        return False
+    if a == b:
+        return True
+    # 서로 다른 매체가 같은 사건을 다르게 표현해도 앞부분이 거의 같거나
+    # 전체적으로 매우 유사하면 중복으로 간주.
+    prefix_len = min(len(a), len(b), 14)
+    if prefix_len >= 8 and a[:prefix_len] == b[:prefix_len]:
+        return True
+    return difflib.SequenceMatcher(None, a, b).ratio() >= 0.72
+
 def fetch_naver_news(code):
     out = []
     try:
         js = _get(f"https://m.stock.naver.com/api/news/stock/{code}"
-                  f"?pageSize={NEWS_COUNT*2}&page=1&clusterId=").json()
+                  f"?pageSize={NEWS_FETCH}&page=1&clusterId=").json()
         # 응답은 [ {items:[...]}, ... ] 또는 [ {..기사..}, ... ] 형태 모두 대응
         flat = []
         data = js if isinstance(js, list) else js.get("items", js)
@@ -396,12 +420,36 @@ def fetch_naver_news(code):
                 flat.extend(grp["items"])
             elif isinstance(grp, dict):
                 flat.append(grp)
+
+        items = []
         for it in flat:
             title = _strip_tags(it.get("title"))
             if not title:
                 continue
-            date = _norm_date(it.get("datetime") or it.get("officeName") or "")
-            out.append({"date": date, "title": title, "sum": tag_news(title)})
+            raw_dt = str(it.get("datetime") or "")  # 예: "202606231303" (YYYYMMDDHHmm)
+            url = (it.get("mobileNewsUrl") or "").strip()
+            if not url:
+                oid, aid = it.get("officeId"), it.get("articleId")
+                if oid and aid:
+                    url = f"https://n.news.naver.com/mnews/article/{oid}/{aid}"
+            items.append({
+                "date": _norm_date(raw_dt or it.get("officeName") or ""),
+                "title": title, "sum": tag_news(title), "url": url,
+                "_sort": raw_dt,
+            })
+
+        # 최신순 정렬 — datetime이 YYYYMMDDHHmm 문자열이라 그대로 내림차순 비교 가능.
+        items.sort(key=lambda x: x["_sort"], reverse=True)
+
+        # 같은 사건을 다룬 중복(유사) 기사 제거 — 먼저 온(최신) 기사를 남긴다.
+        seen_keys = []
+        for it in items:
+            key = _norm_title_key(it["title"])
+            if any(_is_dup_title(key, s) for s in seen_keys):
+                continue
+            seen_keys.append(key)
+            it.pop("_sort", None)
+            out.append(it)
             if len(out) >= NEWS_COUNT:
                 break
     except Exception as e:
