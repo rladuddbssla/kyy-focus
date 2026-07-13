@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-07-13 05:22",
+  "asOf": "2026-07-13 08:45",
   "source": "DART · 네이버",
   "items": [
     {
@@ -8,8 +8,8 @@
       "market": "KOSPI",
       "tag": "여성 이너웨어",
       "biz": "여성 이너웨어(속옷) 제조·유통 · 브랜드 비비안/샌디즈",
-      "price": 6180,
-      "changePct": 2.15,
+      "price": 6290,
+      "changePct": 3.97,
       "metrics": {
         "ROE": "-5.9%",
         "PBR": "0.12",
@@ -105,8 +105,8 @@
       "market": "KOSDAQ",
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
-      "price": 2625,
-      "changePct": -4.2,
+      "price": 2640,
+      "changePct": -3.65,
       "metrics": {
         "ROE": "6.9%",
         "PBR": "0.21",
@@ -171,15 +171,15 @@
       "news": [
         {
           "date": "2026-06-29",
-          "title": "[핀포인트] [아이오케이이엔엠] 시너지 없는 신사업, 영업손실이 매출 ...",
-          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
-          "url": "https://news.dealsitetv.com/articles/172500"
-        },
-        {
-          "date": "2026-06-29",
           "title": "[핀포인트] [아이오케이이엔엠] 감자 꼼수로 동전주 탈피…‘시한부 생...",
           "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
           "url": "https://news.dealsitetv.com/articles/172476"
+        },
+        {
+          "date": "2026-06-29",
+          "title": "[핀포인트] [아이오케이이엔엠] 시너지 없는 신사업, 영업손실이 매출 ...",
+          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
+          "url": "https://news.dealsitetv.com/articles/172500"
         },
         {
           "date": "2026-06-23",
@@ -202,11 +202,11 @@
       "market": "KOSPI",
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
-      "price": 6240,
-      "changePct": -11.61,
+      "price": 6170,
+      "changePct": -12.61,
       "metrics": {
         "ROE": "-6.5%",
-        "PBR": "1.61",
+        "PBR": "1.59",
         "debt": "53%",
         "current": "121%",
         "foreign": "0.13%"
@@ -287,11 +287,11 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 921,
-      "changePct": -3.86,
+      "price": 925,
+      "changePct": -3.44,
       "metrics": {
         "ROE": "-1.4%",
-        "PBR": "1.76",
+        "PBR": "1.77",
         "debt": "94%",
         "current": "96%",
         "foreign": "0.36%"
@@ -384,12 +384,12 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2520,
-      "changePct": 2.02,
+      "price": 2490,
+      "changePct": 0.81,
       "metrics": {
         "ROE": "3.5%",
         "PBR": "0.27",
-        "PER": "1.13",
+        "PER": "1.12",
         "debt": "60%",
         "current": "214%",
         "foreign": "1.05%"
