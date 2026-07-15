@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-07-15 22:54",
+  "asOf": "2026-07-15 23:46",
   "source": "DART · 네이버",
   "items": [
     {
@@ -9,7 +9,7 @@
       "tag": "여성 이너웨어",
       "biz": "여성 이너웨어(속옷) 제조·유통 · 브랜드 비비안/샌디즈",
       "price": 10620,
-      "changePct": 29.99,
+      "changePct": 0.0,
       "metrics": {
         "ROE": "-5.9%",
         "PBR": "0.21",
@@ -106,13 +106,13 @@
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
       "price": 2520,
-      "changePct": -2.14,
+      "changePct": 0.0,
       "metrics": {
         "ROE": "6.9%",
         "PBR": "0.20",
         "debt": "21%",
         "current": "209%",
-        "foreign": "1.12%"
+        "foreign": "1.13%"
       },
       "fin": [
         {
@@ -203,13 +203,13 @@
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
       "price": 5980,
-      "changePct": 1.01,
+      "changePct": 0.0,
       "metrics": {
         "ROE": "-6.5%",
         "PBR": "1.54",
         "debt": "53%",
         "current": "121%",
-        "foreign": "0.16%"
+        "foreign": "0.17%"
       },
       "fin": [
         {
@@ -288,7 +288,7 @@
         "PBR": "1.69",
         "debt": "94%",
         "current": "96%",
-        "foreign": "0.39%"
+        "foreign": "0.44%"
       },
       "fin": [
         {
@@ -379,14 +379,14 @@
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
       "price": 2540,
-      "changePct": -0.78,
+      "changePct": 0.0,
       "metrics": {
         "ROE": "3.5%",
         "PBR": "0.28",
         "PER": "1.14",
         "debt": "60%",
         "current": "214%",
-        "foreign": "1.06%"
+        "foreign": "1.04%"
       },
       "fin": [
         {
