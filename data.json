@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-07-16 01:21",
+  "asOf": "2026-07-16 04:50",
   "source": "DART · 네이버",
   "items": [
     {
@@ -73,6 +73,18 @@
       ],
       "news": [
         {
+          "date": "2026-07-16",
+          "title": "日제품 불매 수혜주 급등… 비비안·모나리자에 올라탈까",
+          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
+          "url": "https://www.pinpointnews.co.kr/news/articleView.html?idxno=469044"
+        },
+        {
+          "date": "2026-07-16",
+          "title": "비비안 주가 장중 상한가, '상장폐지 막자' 응원 매수에 관련주 강세",
+          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
+          "url": "https://www.businesspost.co.kr/BP?command=article_view&num=442500"
+        },
+        {
           "date": "2026-07-15",
           "title": "비비안, 투자주의종목 지정예고→주가 급등세 주의",
           "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
@@ -83,18 +95,6 @@
           "title": "비비안, 장중 상한가 직행…강한 매수세에 1만620원 마감권 진입",
           "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
           "url": "https://www.job-post.co.kr/news/articleView.html?idxno=221262"
-        },
-        {
-          "date": "2026-07-15",
-          "title": "[특징주] 비비안, 애국 기업 부각에 이틀째 上",
-          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
-          "url": "https://www.cstimes.com/news/articleView.html?idxno=713585"
-        },
-        {
-          "date": "2026-07-15",
-          "title": "비비안 주가, 상한가... 무슨 일?",
-          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
-          "url": "https://www.ggilbo.com/news/articleView.html?idxno=1169558"
         }
       ],
       "summary": "자산가치 대비로는 매우 싸지만 영업 적자가 이어지는 전형적인 '저PBR·실적부진' 종목입니다. 감사의견 '적정' 확보와 부채·유동성 개선은 긍정적이나, 신규 브랜드(샌디즈)의 매출 전환이 확인되기 전까지는 '가치는 있으나 방향은 미확정' 구간으로 보는 게 안전합니다."
@@ -105,11 +105,11 @@
       "market": "KOSDAQ",
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
-      "price": 2635,
-      "changePct": 4.56,
+      "price": 2760,
+      "changePct": 9.52,
       "metrics": {
         "ROE": "6.9%",
-        "PBR": "0.21",
+        "PBR": "0.22",
         "debt": "21%",
         "current": "209%",
         "foreign": "1.13%"
@@ -171,15 +171,15 @@
       "news": [
         {
           "date": "2026-06-29",
-          "title": "[핀포인트] [아이오케이이엔엠] 감자 꼼수로 동전주 탈피…‘시한부 생...",
-          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
-          "url": "https://news.dealsitetv.com/articles/172476"
-        },
-        {
-          "date": "2026-06-29",
           "title": "[핀포인트] [아이오케이이엔엠] 시너지 없는 신사업, 영업손실이 매출 ...",
           "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
           "url": "https://news.dealsitetv.com/articles/172500"
+        },
+        {
+          "date": "2026-06-29",
+          "title": "[핀포인트] [아이오케이이엔엠] 감자 꼼수로 동전주 탈피…‘시한부 생...",
+          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
+          "url": "https://news.dealsitetv.com/articles/172476"
         },
         {
           "date": "2026-06-23",
@@ -202,11 +202,11 @@
       "market": "KOSPI",
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
-      "price": 5700,
-      "changePct": -4.68,
+      "price": 5400,
+      "changePct": -9.7,
       "metrics": {
         "ROE": "-6.5%",
-        "PBR": "1.47",
+        "PBR": "1.39",
         "debt": "53%",
         "current": "121%",
         "foreign": "0.17%"
@@ -281,11 +281,11 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 838,
-      "changePct": -5.1,
+      "price": 853,
+      "changePct": -3.4,
       "metrics": {
         "ROE": "-1.4%",
-        "PBR": "1.60",
+        "PBR": "1.63",
         "debt": "94%",
         "current": "96%",
         "foreign": "0.44%"
@@ -378,12 +378,12 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2535,
-      "changePct": -0.2,
+      "price": 2505,
+      "changePct": -1.38,
       "metrics": {
         "ROE": "3.5%",
-        "PBR": "0.28",
-        "PER": "1.14",
+        "PBR": "0.27",
+        "PER": "1.13",
         "debt": "60%",
         "current": "214%",
         "foreign": "1.04%"
