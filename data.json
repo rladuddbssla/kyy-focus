@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-07-22 23:56",
+  "asOf": "2026-07-23 01:28",
   "source": "DART · 네이버",
   "items": [
     {
@@ -8,8 +8,8 @@
       "market": "KOSPI",
       "tag": "여성 이너웨어",
       "biz": "여성 이너웨어(속옷) 제조·유통 · 브랜드 비비안/샌디즈",
-      "price": 7130,
-      "changePct": 0.0,
+      "price": 7040,
+      "changePct": -1.26,
       "metrics": {
         "ROE": "-5.9%",
         "PBR": "0.14",
@@ -105,11 +105,11 @@
       "market": "KOSDAQ",
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
-      "price": 2845,
-      "changePct": 0.0,
+      "price": 2925,
+      "changePct": 2.81,
       "metrics": {
         "ROE": "6.9%",
-        "PBR": "0.23",
+        "PBR": "0.24",
         "debt": "21%",
         "current": "209%",
         "foreign": "1.09%"
@@ -190,11 +190,11 @@
       "market": "KOSPI",
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
-      "price": 4305,
-      "changePct": 0.0,
+      "price": 4405,
+      "changePct": 2.32,
       "metrics": {
         "ROE": "-6.5%",
-        "PBR": "1.11",
+        "PBR": "1.13",
         "debt": "53%",
         "current": "121%",
         "foreign": "0.22%"
@@ -269,11 +269,11 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 817,
-      "changePct": 0.0,
+      "price": 801,
+      "changePct": -1.96,
       "metrics": {
         "ROE": "-1.4%",
-        "PBR": "1.56",
+        "PBR": "1.53",
         "debt": "94%",
         "current": "96%",
         "foreign": "0.40%"
@@ -366,12 +366,12 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2475,
-      "changePct": 0.0,
+      "price": 2530,
+      "changePct": 2.22,
       "metrics": {
         "ROE": "3.5%",
         "PBR": "0.27",
-        "PER": "1.11",
+        "PER": "1.14",
         "debt": "60%",
         "current": "214%",
         "foreign": "1.05%"
@@ -422,12 +422,6 @@
           "title": "[기재정정]주요사항보고서(유상증자결정)",
           "plain": "새 주식을 발행해 외부 자금을 조달. 주식 수가 늘어 기존 주주 지분이 희석될 수 있습니다. 자금 용도(운영·투자·차입금 상환)를 확인하세요.",
           "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260625000227"
-        },
-        {
-          "date": "2026-06-22",
-          "title": "[기재정정]주주명부폐쇄기간또는기준일설정",
-          "plain": "정기·수시 공시 사항. 원문에서 상세 내용을 확인하세요.",
-          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260622900518"
         }
       ],
       "news": [
