@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-07-23 22:47",
+  "asOf": "2026-07-23 23:49",
   "source": "DART · 네이버",
   "items": [
     {
@@ -9,7 +9,7 @@
       "tag": "여성 이너웨어",
       "biz": "여성 이너웨어(속옷) 제조·유통 · 브랜드 비비안/샌디즈",
       "price": 7080,
-      "changePct": -0.7,
+      "changePct": 0.0,
       "metrics": {
         "ROE": "-5.9%",
         "PBR": "0.14",
@@ -106,13 +106,13 @@
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
       "price": 2995,
-      "changePct": 5.27,
+      "changePct": 0.0,
       "metrics": {
         "ROE": "6.9%",
         "PBR": "0.24",
         "debt": "21%",
         "current": "209%",
-        "foreign": "1.09%"
+        "foreign": "1.04%"
       },
       "fin": [
         {
@@ -191,13 +191,13 @@
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
       "price": 4445,
-      "changePct": 3.25,
+      "changePct": 0.0,
       "metrics": {
         "ROE": "-6.5%",
         "PBR": "1.14",
         "debt": "53%",
         "current": "121%",
-        "foreign": "0.22%"
+        "foreign": "0.24%"
       },
       "fin": [
         {
@@ -270,13 +270,13 @@
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
       "price": 802,
-      "changePct": -1.84,
+      "changePct": 0.0,
       "metrics": {
         "ROE": "-1.4%",
         "PBR": "1.53",
         "debt": "94%",
         "current": "96%",
-        "foreign": "0.40%"
+        "foreign": "0.33%"
       },
       "fin": [
         {
@@ -367,14 +367,14 @@
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
       "price": 2690,
-      "changePct": 8.69,
+      "changePct": 0.0,
       "metrics": {
         "ROE": "3.5%",
         "PBR": "0.29",
         "PER": "1.21",
         "debt": "60%",
         "current": "214%",
-        "foreign": "1.05%"
+        "foreign": "1.12%"
       },
       "fin": [
         {
