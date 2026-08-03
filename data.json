@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-08-03 05:49",
+  "asOf": "2026-08-03 09:00",
   "source": "DART · 네이버",
   "items": [
     {
@@ -8,12 +8,14 @@
       "market": "KOSPI",
       "tag": "여성 이너웨어",
       "biz": "여성 이너웨어(속옷) 제조·유통 · 브랜드 비비안/샌디즈",
-      "price": 0,
-      "changePct": 0,
+      "price": 6590,
+      "changePct": 29.98,
       "metrics": {
         "ROE": "-5.9%",
+        "PBR": "0.26",
         "debt": "198%",
-        "current": "82%"
+        "current": "82%",
+        "foreign": "0.00%"
       },
       "fin": [
         {
@@ -69,7 +71,32 @@
           "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260715000384"
         }
       ],
-      "news": [],
+      "news": [
+        {
+          "date": "2026-08-03",
+          "title": "[이격도과열 종목] 본느 아티스트스튜디오 비비안 펩트론 알트 썸에이지...",
+          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
+          "url": "https://www.pinpointnews.co.kr/news/articleView.html?idxno=473956"
+        },
+        {
+          "date": "2026-07-31",
+          "title": "'애국 매수' 열풍 속 급등락한 비비안… 300억 원 규모 유증, 상장유지 ...",
+          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
+          "url": "https://www.ilyoseoul.co.kr/news/articleView.html?idxno=520608"
+        },
+        {
+          "date": "2026-07-31",
+          "title": "[이격도과열 종목] 에넥스 조이웍스앤코 비비안 에스피지 GRT 바이브컴퍼...",
+          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
+          "url": "https://www.pinpointnews.co.kr/news/articleView.html?idxno=473353"
+        },
+        {
+          "date": "2026-07-31",
+          "title": "비비안 주가, 상한가... 어떤 회사길래?",
+          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
+          "url": "https://www.ggilbo.com/news/articleView.html?idxno=1172576"
+        }
+      ],
       "summary": "자산가치 대비로는 매우 싸지만 영업 적자가 이어지는 전형적인 '저PBR·실적부진' 종목입니다. 감사의견 '적정' 확보와 부채·유동성 개선은 긍정적이나, 신규 브랜드(샌디즈)의 매출 전환이 확인되기 전까지는 '가치는 있으나 방향은 미확정' 구간으로 보는 게 안전합니다."
     },
     {
@@ -78,12 +105,14 @@
       "market": "KOSDAQ",
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
-      "price": 0,
-      "changePct": 0,
+      "price": 2900,
+      "changePct": 4.32,
       "metrics": {
         "ROE": "6.9%",
+        "PBR": "0.23",
         "debt": "21%",
-        "current": "209%"
+        "current": "209%",
+        "foreign": "0.98%"
       },
       "fin": [
         {
@@ -127,7 +156,32 @@
           "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710900440"
         }
       ],
-      "news": [],
+      "news": [
+        {
+          "date": "2026-06-29",
+          "title": "[핀포인트] [아이오케이이엔엠] 감자 꼼수로 동전주 탈피…‘시한부 생...",
+          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
+          "url": "https://news.dealsitetv.com/articles/172476"
+        },
+        {
+          "date": "2026-06-29",
+          "title": "[핀포인트] [아이오케이이엔엠] 시너지 없는 신사업, 영업손실이 매출 ...",
+          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
+          "url": "https://news.dealsitetv.com/articles/172500"
+        },
+        {
+          "date": "2026-06-23",
+          "title": "아이오케이이엔엠, '박지훈 아시아 투어' 흥행…글로벌 공연 매출 본격...",
+          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
+          "url": "https://www.mt.co.kr/stock/2026/06/23/2026062312531746130"
+        },
+        {
+          "date": "2026-06-22",
+          "title": "아이오케이이엔엠, 소수계좌 거래집중→투자주의종목 지정 예고",
+          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
+          "url": "https://www.topstarnews.net/news/articleView.html?idxno=16106771"
+        }
+      ],
       "summary": "사명 변경·무상감자·유상증자가 짧은 기간에 몰린 구조조정 진행형 엔터주입니다. 유상증자로 재무 리스크는 일부 해소됐지만, 공연·쇼비즈니스 매출이 실제 실적으로 이어지는지가 관전 포인트입니다. 자본 이벤트가 잦아 주당 지표보다 '현금·수주' 흐름을 보는 편이 낫습니다."
     },
     {
@@ -136,12 +190,14 @@
       "market": "KOSPI",
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
-      "price": 0,
-      "changePct": 0,
+      "price": 4575,
+      "changePct": 6.64,
       "metrics": {
         "ROE": "-6.5%",
+        "PBR": "1.18",
         "debt": "53%",
-        "current": "121%"
+        "current": "121%",
+        "foreign": "0.32%"
       },
       "fin": [
         {
@@ -191,7 +247,20 @@
           "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260708000355"
         }
       ],
-      "news": [],
+      "news": [
+        {
+          "date": "2026-06-24",
+          "title": "차AI헬스케어, 대규모 공급 계약 영향에 20%대 강세",
+          "url": "https://n.news.naver.com/mnews/article/008/0005376234",
+          "sum": "공급·납품 계약 재료. 실제 매출 반영 규모 확인."
+        },
+        {
+          "date": "2026-06-23",
+          "title": "[특징주] 차AI헬스케어, 급락장에도 대규모 장기 공급계약에 상한가(...",
+          "url": "https://n.news.naver.com/mnews/article/001/0016154292",
+          "sum": "공급·납품 계약 재료. 실제 매출 반영 규모 확인."
+        }
+      ],
       "summary": "5개 종목 중 재무 체력이 가장 단단하고, 차바이오텍 계열 편입과 카카오헬스케어 지분 인수로 'AI 헬스케어' 성장 스토리를 갖췄습니다. 다만 성장 기대가 선반영된 밸류에이션이라, 코스메틱 본업 실적과 신사업(피지컬AI)의 실제 매출 전환 속도가 주가를 좌우합니다."
     },
     {
@@ -200,12 +269,14 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 0,
-      "changePct": 0,
+      "price": 826,
+      "changePct": -3.84,
       "metrics": {
         "ROE": "-1.4%",
+        "PBR": "1.58",
         "debt": "94%",
-        "current": "96%"
+        "current": "96%",
+        "foreign": "0.63%"
       },
       "fin": [
         {
@@ -261,7 +332,32 @@
           "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721001282"
         }
       ],
-      "news": [],
+      "news": [
+        {
+          "date": "2026-07-06",
+          "title": "비투엔, 투자주의 종목 지정→주가 변동성 경계",
+          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
+          "url": "https://www.topstarnews.net/news/articleView.html?idxno=16125477"
+        },
+        {
+          "date": "2026-06-09",
+          "title": "비투엔 주가, 6월 9일 995원 5.77% 하락 마감",
+          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
+          "url": "https://www.joongangenews.com/news/articleView.html?idxno=524777"
+        },
+        {
+          "date": "2026-05-28",
+          "title": "비투엔 주가, 5월 28일 1,034원 1.62% 하락 마감",
+          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
+          "url": "https://www.joongangenews.com/news/articleView.html?idxno=522371"
+        },
+        {
+          "date": "2026-05-27",
+          "title": "비투엔 주가, 5월 27일 1,051원 3.93% 하락 마감",
+          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
+          "url": "https://www.joongangenews.com/news/articleView.html?idxno=522026"
+        }
+      ],
       "summary": "AI·빅데이터 데이터 솔루션이라는 본업 위에 스테이블코인 결제·글로벌 ERP 제휴 같은 테마성 신사업을 얹은 종목입니다. 흑자는 유지하나 이익 규모가 작고, 유동성·최대주주 변동이 리스크 요인입니다. 신사업 뉴스가 실제 계약·매출로 이어지는지 숫자로 확인하는 접근이 필요합니다."
     },
     {
@@ -270,12 +366,15 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 0,
-      "changePct": 0,
+      "price": 2390,
+      "changePct": -1.24,
       "metrics": {
         "ROE": "3.5%",
+        "PBR": "0.26",
+        "PER": "1.08",
         "debt": "60%",
-        "current": "214%"
+        "current": "214%",
+        "foreign": "1.00%"
       },
       "fin": [
         {
@@ -306,7 +405,32 @@
       ],
       "finNote": "IT 인프라·클라우드 유통이 캐시카우로 매출은 안정적. 유상증자 납입 완료로 신사업 실탄을 확보하며 그룹에서 독립.",
       "disc": [],
-      "news": [],
+      "news": [
+        {
+          "date": "2026-04-24",
+          "title": "디모아, 유상증자 결정…약 186억원 규모",
+          "sum": "자금 조달(증자) 재료. 규모·용도와 지분 희석 여부 확인.",
+          "url": "https://www.digitaltoday.co.kr/news/articleView.html?idxno=660140"
+        },
+        {
+          "date": "2026-04-13",
+          "title": "디모아, 6월8일 임시주총 소집 결의",
+          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
+          "url": "https://www.digitaltoday.co.kr/news/articleView.html?idxno=656402"
+        },
+        {
+          "date": "2026-03-30",
+          "title": "디모아, 정기주주총회서 정관 변경·이사 선임 등 안건 가결",
+          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
+          "url": "https://www.digitaltoday.co.kr/news/articleView.html?idxno=649475"
+        },
+        {
+          "date": "2026-03-27",
+          "title": "디모아 최대주주 에스제이홀딩스 제1호투자조합, 디모아 주식등의 수 2...",
+          "sum": "지배구조 변동. 경영권·전략 방향의 큰 변수.",
+          "url": "https://www.digitaltoday.co.kr/news/articleView.html?idxno=647800"
+        }
+      ],
       "summary": "IT 인프라·클라우드 유통이라는 안정적 캐시카우를 보유해 5개 중 매출 기반이 견실한 편입니다. 유상증자로 신사업 실탄을 확보하고 그룹에서 독립했습니다. 관건은 조달 자금을 어떤 신사업에 투입하고 그것이 기존 IT 본업과 시너지를 내느냐입니다."
     }
   ]
