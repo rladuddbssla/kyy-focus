@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-08-10 23:23",
+  "asOf": "2026-08-11 00:44",
   "source": "DART · 네이버",
   "items": [
     {
@@ -105,8 +105,8 @@
       "market": "KOSDAQ",
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
-      "price": 3290,
-      "changePct": 0.0,
+      "price": 3205,
+      "changePct": -2.58,
       "metrics": {
         "ROE": "6.9%",
         "PBR": "0.26",
@@ -202,11 +202,11 @@
       "market": "KOSPI",
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
-      "price": 4850,
-      "changePct": 0.0,
+      "price": 5020,
+      "changePct": 3.51,
       "metrics": {
         "ROE": "-6.5%",
-        "PBR": "1.25",
+        "PBR": "1.29",
         "debt": "53%",
         "current": "121%",
         "foreign": "0.36%"
@@ -269,11 +269,11 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 885,
-      "changePct": 0.0,
+      "price": 896,
+      "changePct": 1.24,
       "metrics": {
         "ROE": "-1.4%",
-        "PBR": "1.69",
+        "PBR": "1.71",
         "debt": "94%",
         "current": "96%",
         "foreign": "0.38%"
@@ -366,12 +366,12 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2510,
-      "changePct": 0.0,
+      "price": 2475,
+      "changePct": -1.39,
       "metrics": {
         "ROE": "3.5%",
         "PBR": "0.27",
-        "PER": "1.13",
+        "PER": "1.11",
         "debt": "60%",
         "current": "214%",
         "foreign": "1.04%"
