@@ -2,9 +2,11 @@ name: update-focus-data
 
 on:
   schedule:
-    # 매시 정각(UTC=KST 동일 분). 정각은 러너가 혼잡해 수 분 지연될 수 있음(정상).
-    # 더 안정적으로 돌리려면 '7 * * * *' 처럼 분을 몇 분 뒤로 미루면 됩니다.
-    - cron: "0 * * * *"
+    # [KYY_FOCUS_HEALTH_20260813] 정각(0분)에서 17분으로 옮김.
+    #   실측(2026-08-12 하루): 24회 중 19회만 실행되고 01·02·04·06·13시 UTC 는 통째로
+    #   건너뛰었다. 공개 저장소의 예약 실행은 정각에 큐가 몰려 지연·유실이 잦다.
+    #   붐비지 않는 분으로 옮기는 것이 GitHub 이 권장하는 회피책이다.
+    - cron: "17 * * * *"
   workflow_dispatch:      # Actions 탭에서 수동 실행 버튼
 
 # data.json 을 커밋/푸시하기 위한 쓰기 권한
@@ -41,10 +43,18 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet -- data.json; then
+          # data_last_good.json = 모든 소스가 정상이었던 마지막 스냅샷(자기복구용).
+          if git diff --quiet -- data.json data_last_good.json; then
             echo "변경 없음 → 커밋 생략"
           else
             git add data.json
+            if [ -f data_last_good.json ]; then git add data_last_good.json; fi
             git commit -m "chore: update data.json ($(date -u '+%Y-%m-%d %H:%MZ'))"
             git push
           fi
+
+      # [KYY_FOCUS_HEALTH_20260813] 데이터는 위에서 이미 배포하고, 여기서 결손만 판정한다.
+      #   한 번 삐끗 → ::warning(초록 유지), 3시간 이상 연속 결손 → 실패(빨간 X).
+      #   예약 워크플로가 실패하면 GitHub 이 저장소 소유자에게 메일을 보낸다 = 알림.
+      - name: Check data health
+        run: python check_health.py
