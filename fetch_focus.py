@@ -60,6 +60,28 @@ DISC_COUNT = 4           # 회사당 공시 개수
 OUT_PATH = os.path.join(os.path.dirname(__file__), "data.json")
 NOTES_PATH = os.path.join(os.path.dirname(__file__), "notes.json")  # 수기 코멘트(선택)
 
+# [KYY_FOCUSQ_BRIDGE_20260803] 시세·뉴스 폴백 브리지(한국 IP NAS 가 만들어 공개하는 JSON).
+#   왜: 2026-08-03 05:25Z 실행부터 러너에서 네이버 응답이 전부 비어 price/changePct/
+#       PER/PBR/foreign/news 가 통째로 빠졌다(DART 계열은 전부 정상이었다). 이력 이분탐색
+#       결과 01:29Z 까지는 정상이었고, 같은 엔드포인트를 한국 IP 에서 부르면 200 이다.
+#       → 코드·파서 문제가 아니라 러너에서 네이버에 못 닿는 문제.
+#   무엇: NAS(build_focus_quotes.py)가 같은 엔드포인트를 같은 파싱으로 받아 떨궈 둔 값.
+#         네이버 직접 수집이 성공하면 그 값이 우선이고, 비었을 때만 이걸로 메운다.
+BRIDGE_URL = "https://dmpofgod8529.synology.me/focus_quotes.json"
+_BRIDGE_CACHE = None
+BRIDGE_USED = set()      # 브리지로 메운 종목코드 - data.json 의 source 에 표기한다
+
+# [KYY_FOCUS_HEALTH_20260813] 조용한 실패 금지 - 소스별 건강상태 · 마지막 정상값 유지.
+#   왜: 2026-08-13 00:53Z 실행에서 DART 계열(fin/disc/ROE/부채/유동)이 5종목 모두 통째로
+#       비었는데도 스크립트는 exit 0, 워크플로는 초록불, data.json 은 "빈 값"으로 덮여
+#       배포됐다. 실패가 아무 데도 남지 않아 사이트만 텅 빈 카드를 보여준다.
+#   무엇: (1) 소스별 성공 여부를 health 로 기록하고 (2) 실패한 소스의 칸은 직전 data.json 의
+#         마지막 정상값으로 채우되 stale 로 표시해 화면이 '지어낸 값'을 못 쓰게 하며
+#         (3) GitHub 주석(::warning/::error)과 check_health.py 게이트로 알림을 띄운다.
+DART_FAILS = []          # DART 쪽 실패 사유(원문 상태코드/메시지) - 로그와 health 에 남긴다
+NAVER_FAILS = []         # 네이버 쪽 실패 사유
+STALE_ALERT_HOURS = 3    # 이 시간 이상 연속 결손이면 워크플로를 실패시킨다(check_health.py)
+
 # 대상 5개사 — 코드 기준. name/tag/biz 는 표시용 기본값(수집 실패 시 그대로 사용).
 COMPANIES = [
     {"code": "002070", "market": "KOSPI",  "name": "비비안",
@@ -196,10 +218,25 @@ def today():
 # ──────────────────────────────────────────────────────────────────────────
 # 4. DART — corp_code 매핑 (종목코드 → corp_code)
 # ──────────────────────────────────────────────────────────────────────────
+def _dart_error_text(body):
+    """DART 가 zip 대신 돌려준 에러 본문(XML/JSON)에서 status·message 만 뽑는다.
+
+    [KYY_FOCUS_HEALTH_20260813] 원인 규명이 매번 처음부터 시작되지 않도록 상태코드를
+    그대로 남긴다(010 등록되지 않은 인증키 / 011 사용할 수 없는 인증키 / 012 접근할 수
+    없는 IP / 020 요청제한 초과 / 800 시스템 점검 은 대응이 전부 다르다).
+    """
+    m = re.search(r"<status>(\d+)</status>.*?<message>(.*?)</message>", body, re.S)
+    if not m:
+        m = re.search(r'"status"\s*:\s*"(\d+)".*?"message"\s*:\s*"(.*?)"', body, re.S)
+    return f"status={m.group(1)} {m.group(2).strip()}" if m else body[:200].replace("\n", " ")
+
+
 def load_corp_map():
     """corpCode.xml(zip) 다운로드 → {stock_code: corp_code}."""
     url = f"https://opendart.fss.or.kr/api/corpCode.xml?crtfc_key={DART_KEY}"
     r = _get(url)
+    if r.content[:2] != b"PK":   # zip 이 아니면 DART 가 에러 본문을 보낸 것
+        raise RuntimeError(f"corpCode 응답이 ZIP 이 아님 → {_dart_error_text(r.text)}")
     zf = zipfile.ZipFile(io.BytesIO(r.content))
     xml = zf.read(zf.namelist()[0])
     root = ET.fromstring(xml)
@@ -225,6 +262,10 @@ def fetch_disclosures(corp_code):
     }
     r = _get(url, params=params)
     js = r.json()
+    # [KYY_FOCUS_HEALTH_20260813] 013(조회 결과 없음)은 정상 - 그 외 비정상 코드만 기록.
+    if js.get("status") not in ("000", "013"):
+        DART_FAILS.append(f"list.json {corp_code} status={js.get('status')} "
+                          f"{js.get('message')}")
     out = []
     if js.get("status") == "000":
         for it in js.get("list", []):
@@ -286,15 +327,20 @@ def _pick(rows, keys, sj_allow):
 def fetch_financials(corp_code):
     """DART fnlttSinglAcntAll 로 재무 수집. CFS(연결)→OFS(별도) 폴백."""
     url = "https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json"
+    seen_status = set()   # [KYY_FOCUS_HEALTH_20260813] 후보를 다 훑고도 못 찾은 이유를 남긴다
     for (yr, rc) in _period_candidates():
         for fs in ("CFS", "OFS"):
             try:
                 params = {"crtfc_key": DART_KEY, "corp_code": corp_code,
                           "bsns_year": str(yr), "reprt_code": rc, "fs_div": fs}
                 js = _get(url, params=params).json()
-            except Exception:
+            except Exception as e:
+                seen_status.add(f"{type(e).__name__}: {e}")
                 continue
             if js.get("status") != "000":
+                # 013(해당 보고서 없음)은 후보를 넘기며 흔히 나오는 정상 응답이다.
+                if js.get("status") != "013":
+                    seen_status.add(f"status={js.get('status')} {js.get('message')}")
                 continue
             rows = js.get("list", [])
             if not rows:
@@ -332,6 +378,8 @@ def fetch_financials(corp_code):
                 "current": f"{cur_c}%" if cur_c is not None else None,
                 "ROE": f"{roe}%" if roe is not None else None,
             }
+    if seen_status:
+        DART_FAILS.append(f"fnlttSinglAcntAll {corp_code} → " + " | ".join(sorted(seen_status)[:3]))
     return None
 
 # ──────────────────────────────────────────────────────────────────────────
@@ -361,6 +409,7 @@ def fetch_naver_quote(code):
         elif out["changePct"] is not None and code2 in ("02", "01"):
             out["changePct"] = abs(out["changePct"])
     except Exception as e:
+        NAVER_FAILS.append(f"basic {code}: {type(e).__name__} {e}")
         print(f"  [warn] naver basic {code}: {e}", file=sys.stderr)
 
     # 7-2. PER/PBR/외국인 — integration.totalInfos
@@ -381,6 +430,7 @@ def fetch_naver_quote(code):
             elif "foreign" in cid or "외국인" in label:
                 out["foreign"] = val if "%" in val else val + "%"
     except Exception as e:
+        NAVER_FAILS.append(f"integration {code}: {type(e).__name__} {e}")
         print(f"  [warn] naver integration {code}: {e}", file=sys.stderr)
     return out
 
@@ -535,6 +585,7 @@ def fetch_naver_news(code, name):
                     it["sum"] = tag_news(it["title"])
                     items.append(it)
         except Exception as e2:
+            NAVER_FAILS.append(f"news {code}: {type(e2).__name__} {e2}")
             print(f"  [warn] naver news fallback {code}: {e2}", file=sys.stderr)
             items = []
 
@@ -545,6 +596,23 @@ def fetch_naver_news(code, name):
         it.pop("_dt", None)
         out.append(it)
     return out
+
+# ──────────────────────────────────────────────────────────────────────────
+# 8-b. 폴백 브리지 [KYY_FOCUSQ_BRIDGE_20260803]
+# ──────────────────────────────────────────────────────────────────────────
+def load_bridge():
+    """NAS 브리지 JSON 을 한 번만 받아 {코드: 값} 으로 돌려준다. 실패하면 빈 dict."""
+    global _BRIDGE_CACHE
+    if _BRIDGE_CACHE is None:
+        try:
+            js = _get(BRIDGE_URL).json()
+            _BRIDGE_CACHE = js.get("quotes") or {}
+            print(f"[bridge] {len(_BRIDGE_CACHE)}종목 로드 (asOf {js.get('asOf')})")
+        except Exception as e:
+            print(f"  [warn] bridge 로드 실패: {e}", file=sys.stderr)
+            _BRIDGE_CACHE = {}
+    return _BRIDGE_CACHE
+
 
 # ──────────────────────────────────────────────────────────────────────────
 # 9. 회사별 조립
@@ -562,10 +630,48 @@ def build_company(base, corp_map, notes):
     print(f"[collect] {base['name']} ({code})")
     corp = corp_map.get(code)
 
-    fin_block = fetch_financials(corp) if corp else None
-    disc = fetch_disclosures(corp) if corp else []
-    quote = fetch_naver_quote(code)
-    news = fetch_naver_news(code, base["name"])
+    # [KYY_FOCUS_HEALTH_20260813] 소스마다 따로 막는다. 예전엔 여기서 예외가 나면 main 의
+    #   except 가 회사 전체를 통째로 버려(=data.json 에서 종목이 사라져) 원인도 안 보였다.
+    try:
+        fin_block = fetch_financials(corp) if corp else None
+    except Exception as e:
+        DART_FAILS.append(f"financials {code}: {type(e).__name__} {e}")
+        fin_block = None
+    try:
+        disc = fetch_disclosures(corp) if corp else []
+    except Exception as e:
+        DART_FAILS.append(f"disclosures {code}: {type(e).__name__} {e}")
+        disc = []
+    try:
+        quote = fetch_naver_quote(code)
+    except Exception as e:
+        NAVER_FAILS.append(f"quote {code}: {type(e).__name__} {e}")
+        quote = {}
+    try:
+        news = fetch_naver_news(code, base["name"])
+    except Exception as e:
+        NAVER_FAILS.append(f"news {code}: {type(e).__name__} {e}")
+        news = []
+
+    # [KYY_FOCUSQ_BRIDGE_20260803] 네이버 직접 수집이 비면 NAS 브리지로 메운다.
+    #   ★덮어쓰지 않는다 - 비어 있는 칸만 채운다(직접 수집이 언제나 우선).
+    #   ★브리지에도 없으면 예전처럼 비워 둔다(값을 지어내지 않는다).
+    if quote.get("price") is None or not news:
+        b = load_bridge().get(code) or {}
+        if quote.get("price") is None and b.get("price") is not None:
+            quote["price"] = b.get("price")
+            quote["changePct"] = b.get("changePct")
+            for k in ("PER", "PBR", "foreign"):
+                if not quote.get(k):
+                    quote[k] = b.get(k)
+            BRIDGE_USED.add(code)
+            print(f"  [bridge] {base['name']} 시세를 브리지에서 보충 "
+                  f"(price={quote['price']}, chg={quote['changePct']})")
+        if not news and b.get("news"):
+            news = [{k: v for k, v in n.items() if k in ("date", "title", "sum", "url")}
+                    for n in b["news"]]
+            BRIDGE_USED.add(code)
+            print(f"  [bridge] {base['name']} 뉴스 {len(news)}건 브리지에서 보충")
 
     metrics = {
         "ROE": (fin_block or {}).get("ROE"),
@@ -580,6 +686,14 @@ def build_company(base, corp_map, notes):
     return {
         "name": base["name"], "code": code, "market": base["market"],
         "tag": base["tag"], "biz": base["biz"],
+        # [KYY_FOCUS_HEALTH_20260813] '이번 실행에서 실제로 받아온 칸'을 표시해 둔다.
+        #   병합(merge_prev) 뒤에는 값만 봐서는 신선한지 지난 값인지 구분할 수 없다.
+        "_fresh": {
+            "fin": bool((fin_block or {}).get("fin")),
+            "disc": bool(disc),
+            "price": quote.get("price") is not None,
+            "news": bool(news),
+        },
         "price": quote.get("price") or 0,
         "changePct": quote.get("changePct") if quote.get("changePct") is not None else 0,
         "metrics": metrics,
@@ -592,6 +706,158 @@ def build_company(base, corp_map, notes):
     }
 
 # ──────────────────────────────────────────────────────────────────────────
+# 9-b. 마지막 정상값 유지 [KYY_FOCUS_HEALTH_20260813]
+# ──────────────────────────────────────────────────────────────────────────
+LAST_GOOD_PATH = os.path.join(os.path.dirname(__file__), "data_last_good.json")
+
+
+def _load_json(path):
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return None
+
+
+def load_prev():
+    """직전 data.json(=저장소에 커밋돼 있는 마지막 결과). 없으면 None."""
+    return _load_json(OUT_PATH)
+
+
+def load_last_good():
+    """마지막으로 '모든 소스가 정상'이었던 스냅샷.
+
+    ★이게 없으면 자기복구가 안 된다: 2026-08-13 사건처럼 결손본이 한 번 커밋되면
+      직전 data.json 자체가 빈 값이 되어 메울 원본이 사라진다. 그래서 정상일 때마다
+      따로 떠 둔다(커밋 대상 - update.yml 참고).
+    """
+    return _load_json(LAST_GOOD_PATH)
+
+
+# 소스 → 그 소스가 책임지는 필드(병합 단위). metrics 는 키 단위로 나눠 갖는다.
+_DART_METRIC_KEYS = ("ROE", "debt", "current")
+_NAVER_METRIC_KEYS = ("PER", "PBR", "foreign")
+
+
+def merge_prev(items, prev, last_good, dart_ok, naver_ok):
+    """실패한 소스의 빈 칸만 직전 data.json 값으로 채우고 stale 로 표시한다.
+
+    ★규칙 두 가지만 지킨다.
+      1) 소스가 '정상'인데 비어 있는 건 진짜로 없는 것이다(예: 최근 30일 공시 0건).
+         이때는 절대 옛 값을 되살리지 않는다 — 그러면 지워진 공시가 영원히 남는다.
+      2) 소스가 '실패'했을 때만 직전 값을 그대로 두되, stale 에 '그 값의 기준시각'을
+         적어 화면이 "언제 값인지" 밝힐 수 있게 한다(값을 지어내지 않는다).
+    """
+    # 되살릴 원본은 두 겹: 직전 data.json → (거기도 비었으면) 마지막 정상 스냅샷.
+    sources = [s for s in (prev, last_good)
+               if s and isinstance(s.get("items"), list)]
+    if not sources:
+        return items
+    by_code = [({it.get("code"): it for it in s["items"] if isinstance(it, dict)},
+                s.get("asOf") or "?") for s in sources]
+
+    for it in items:
+        code = it["code"]
+        cands = [(m[code], stamp) for m, stamp in by_code if code in m]
+        if not cands:
+            continue
+        fresh = it.get("_fresh", {})
+        it.setdefault("metrics", {})   # 예외 경로로 실려 온 직전 항목엔 없을 수 있다
+        stale = {}
+
+        def old(field, key=None, metric=None):
+            """옛 값 하나와 '원래 언제 것인지'를 돌려준다.
+
+            직전 실행도 이미 지난값이었다면 그 시각을 이어받는다(안 그러면 며칠 묵은
+            값이 매 시간 '1시간 전 값'으로 둔갑한다). 직전이 비어 있으면 마지막 정상
+            스냅샷까지 내려가 찾는다.
+            """
+            for p, stamp in cands:
+                v = (p.get("metrics") or {}).get(metric) if metric else p.get(key)
+                if v:
+                    return v, ((p.get("stale") or {}).get(field) or stamp)
+            return None, None
+
+        if not dart_ok:
+            if not fresh.get("fin"):
+                v, at = old("fin", key="fin")
+                if v:
+                    it["fin"], stale["fin"] = v, at
+            if not fresh.get("disc"):
+                v, at = old("disc", key="disc")
+                if v:
+                    it["disc"], stale["disc"] = v, at
+            for k in _DART_METRIC_KEYS:
+                if not it["metrics"].get(k):
+                    v, at = old("metrics", metric=k)
+                    if v:
+                        it["metrics"][k], stale["metrics"] = v, at
+
+        if not naver_ok:
+            if not fresh.get("price"):
+                v, at = old("price", key="price")
+                if v:
+                    it["price"], stale["price"] = v, at
+                    # 등락률은 그 가격을 준 쪽의 값을 함께 가져온다(짝이 안 맞으면 안 됨)
+                    it["changePct"] = next((p.get("changePct", 0)
+                                            for p, _ in cands if p.get("price")), 0)
+            if not fresh.get("news"):
+                v, at = old("news", key="news")
+                if v:
+                    it["news"], stale["news"] = v, at
+            for k in _NAVER_METRIC_KEYS:
+                if not it["metrics"].get(k):
+                    v, at = old("metrics", metric=k)
+                    if v:
+                        it["metrics"][k], stale["metrics"] = v, at
+
+        if stale:
+            it.setdefault("stale", {}).update(stale)
+    return items
+
+
+def build_health(items, corp_map, prev):
+    """소스별 성공/실패 + '언제부터 실패했는지'(since) 를 만든다.
+
+    since 는 직전 data.json 의 health 에서 이어받는다. 한 번 삐끗한 것과 몇 시간째
+    죽어 있는 것은 대응이 다르므로(check_health.py 가 이걸로 알림 수위를 정한다).
+    """
+    now = dt.datetime.now().strftime("%Y-%m-%d %H:%M")
+    fresh_fin = sum(1 for it in items if it.get("_fresh", {}).get("fin"))
+    fresh_disc = sum(1 for it in items if it.get("_fresh", {}).get("disc"))
+    fresh_px = sum(1 for it in items if it.get("_fresh", {}).get("price"))
+    fresh_news = sum(1 for it in items if it.get("_fresh", {}).get("news"))
+
+    # DART 는 5종목 모두 정기보고서가 있는 회사들이라 '재무 0건'이면 소스 장애로 본다.
+    dart_ok = bool(corp_map) and fresh_fin > 0
+    naver_ok = fresh_px > 0
+
+    prev_health = (prev or {}).get("health") or {}
+    out = {}
+    for name, ok, got, fails in (
+        ("dart",  dart_ok,  {"fin": fresh_fin, "disc": fresh_disc}, DART_FAILS),
+        ("naver", naver_ok, {"price": fresh_px, "news": fresh_news}, NAVER_FAILS),
+    ):
+        prev_since = (prev_health.get(name) or {}).get("since")
+        out[name] = {
+            "ok": ok,
+            "got": got,
+            "since": None if ok else (prev_since or now),   # 실패 시작 시각(연속 실패면 유지)
+            "err": sorted(set(fails))[:3],
+        }
+    return out, dart_ok, naver_ok
+
+
+def gh_annotate(level, title, message):
+    """GitHub Actions 로그에 주석을 남긴다(로컬 실행에서는 그냥 한 줄 출력)."""
+    msg = str(message).replace("\n", " ")[:400]
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        print(f"::{level} title={title}::{msg}")
+    else:
+        print(f"[{level}] {title}: {msg}", file=sys.stderr)
+
+
+# ──────────────────────────────────────────────────────────────────────────
 # 10. main
 # ──────────────────────────────────────────────────────────────────────────
 def main():
@@ -599,11 +865,16 @@ def main():
         print("ERROR: 환경변수 DART_API_KEY 가 없습니다.", file=sys.stderr)
         sys.exit(1)
 
+    # [KYY_FOCUS_HEALTH_20260813] 빈 칸 메우기용 원본 두 겹(직전 결과 → 마지막 정상 스냅샷)
+    prev = load_prev()
+    last_good = load_last_good()
+
     try:
         corp_map = load_corp_map()
         print(f"[corpCode] {len(corp_map)}개 매핑 로드")
     except Exception as e:
-        print(f"ERROR: corpCode 로드 실패: {e}", file=sys.stderr)
+        DART_FAILS.append(f"corpCode: {type(e).__name__} {e}")
+        gh_annotate("error", "DART corpCode 로드 실패", e)
         corp_map = {}
 
     notes = load_notes()
@@ -612,17 +883,64 @@ def main():
         try:
             items.append(build_company(base, corp_map, notes))
         except Exception as e:
-            print(f"  [error] {base['name']}: {e}", file=sys.stderr)
+            # [KYY_FOCUS_HEALTH_20260813] 종목이 통째로 사라지는 것만은 막는다.
+            #   직전 결과가 있으면 그대로 싣고 stale 로 표시(카드가 없어지면 화면에선
+            #   '5종목 모니터'가 4종목이 되는데 아무 설명도 남지 않는다).
+            gh_annotate("error", f"{base['name']} 수집 실패", e)
+            prev_item = next((p for p in ((prev or {}).get("items") or [])
+                              if p.get("code") == base["code"]), None)
+            if prev_item:
+                prev_item = dict(prev_item)
+                prev_item["stale"] = {"all": (prev or {}).get("asOf", "?")}
+                items.append(prev_item)
         time.sleep(0.4)  # 소스 예의상 간격
+
+    # [KYY_FOCUSQ_BRIDGE_20260803] 출처를 숨기지 않는다 - 브리지로 메운 종목이 있으면
+    #   source 에 남겨, 화면·감사에서 "네이버 직접"과 "NAS 브리지"를 구분할 수 있게 한다.
+    source = "DART · 네이버"
+    if BRIDGE_USED:
+        source += f" (시세·뉴스 {len(BRIDGE_USED)}종목은 NAS 브리지 보충)"
+
+    # [KYY_FOCUS_HEALTH_20260813] 건강상태 판정 → 실패한 소스만 마지막 정상값으로 메움.
+    health, dart_ok, naver_ok = build_health(items, corp_map, prev)
+    items = merge_prev(items, prev, last_good, dart_ok, naver_ok)
+    stale_codes = [it["code"] for it in items if it.get("stale")]
+    for it in items:
+        it.pop("_fresh", None)          # 내부 판정용 필드는 배포물에 남기지 않는다
+
+    for name, label in (("dart", "DART"), ("naver", "네이버")):
+        h = health[name]
+        if not h["ok"]:
+            gh_annotate("error", f"{label} 수집 실패",
+                        f"{h['got']} / since={h['since']} / " + " ; ".join(h["err"]))
+            print(f"[health] {label} 실패 (since {h['since']}) — "
+                  f"마지막 정상값 유지 {len(stale_codes)}종목", file=sys.stderr)
+        else:
+            print(f"[health] {label} 정상 {h['got']}")
 
     payload = {
         "asOf": dt.datetime.now().strftime("%Y-%m-%d %H:%M"),
-        "source": "DART · 네이버",
+        # [KYY_FOCUS_HEALTH_20260813] asOf 는 '러너의 시계'(UTC)라 브라우저(KST)에서
+        #   경과시간을 재면 9시간이 어긋난다. 화면의 '몇 시간째 미갱신' 판정용으로
+        #   시간대가 박힌 값을 따로 싣는다.
+        "asOfUtc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "source": source,
+        "health": health,
         "items": items,
     }
     with open(OUT_PATH, "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
-    print(f"[done] {OUT_PATH} 저장 ({len(items)}개사)")
+
+    # [KYY_FOCUS_HEALTH_20260813] 완전히 정상인 실행만 '마지막 정상 스냅샷'으로 남긴다.
+    #   다음에 어떤 소스가 죽어도 여기서 되살릴 수 있다(결손본이 원본을 덮는 사고 방지).
+    if dart_ok and naver_ok and not stale_codes:
+        with open(LAST_GOOD_PATH, "w", encoding="utf-8") as f:
+            json.dump(payload, f, ensure_ascii=False, indent=2)
+        print(f"[snapshot] {os.path.basename(LAST_GOOD_PATH)} 갱신")
+
+    print(f"[done] {OUT_PATH} 저장 ({len(items)}개사"
+          + (f", 지난값 유지 {len(stale_codes)}종목: {','.join(stale_codes)}" if stale_codes else "")
+          + ")")
 
 
 if __name__ == "__main__":

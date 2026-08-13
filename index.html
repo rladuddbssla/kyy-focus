@@ -33,6 +33,11 @@ a{color:inherit;text-decoration:none;}
 
 .samplebar{background:rgba(245,179,1,.10);border:1px solid rgba(245,179,1,.35);
   color:var(--gold2);border-radius:10px;padding:10px 14px;font-size:12.5px;margin-bottom:20px;}
+/* [KYY_FOCUS_HEALTH_20260813] 데이터는 떴지만 일부 소스가 죽어 '지난 값'인 상태 -
+   샘플 폴백(노랑)과 색을 갈라 한눈에 구분되게 한다. */
+.stalebar{background:rgba(232,102,102,.10);border-color:rgba(232,102,102,.38);color:#e08a8a;}
+.stale-note{margin:8px 0 0;padding:7px 10px;border-radius:8px;font-size:11.5px;
+  background:rgba(232,102,102,.09);border:1px solid rgba(232,102,102,.28);color:#e08a8a;}
 
 /* 회사 카드 */
 .co{background:var(--panel);border:1px solid var(--line);border-radius:14px;
@@ -114,6 +119,10 @@ a{color:inherit;text-decoration:none;}
     GitHub Actions가 <b>fetch_focus.py</b>를 실행해 DART·네이버 실데이터로 자동 교체합니다.
     (실데이터 로드 성공 시 이 안내줄은 표시되지 않습니다.)
   </div>
+
+  <!-- [KYY_FOCUS_HEALTH_20260813] data.json 은 떴지만 수집이 일부 실패했을 때의 안내줄.
+       내용은 loadData() 에서 health/stale/경과시간을 보고 채운다. -->
+  <div class="samplebar stalebar" id="staleBar" style="display:none;"></div>
 
   <div id="cards"></div>
 
@@ -392,6 +401,16 @@ function render(){
     }).join('') : '<div class="empty">최근 뉴스 없음</div>';
 
     var m = c.metrics||{};
+    // [KYY_FOCUS_HEALTH_20260813] 지난 값이 섞여 있으면 그 카드에 언제 값인지 밝힌다.
+    var STALE_LBL = {fin:'재무', disc:'공시', metrics:'지표', price:'시세', news:'뉴스', all:'전체'};
+    var staleNote = '';
+    if(c.stale){
+      var parts = Object.keys(c.stale).map(function(k){
+        return (STALE_LBL[k]||k)+' '+esc(String(c.stale[k]));
+      });
+      staleNote = '<div class="stale-note">⚠ 아래 항목은 <b>갱신에 실패해 마지막 정상값</b>을 '+
+                  '그대로 표시 중입니다 — '+parts.join(' · ')+' 기준</div>';
+    }
     return ''+
     '<div class="co">'+
       '<div class="co-head">'+
@@ -400,6 +419,7 @@ function render(){
         (c.tag?'<span class="co-tag">'+esc(c.tag)+'</span>':'')+
         '<div class="co-price"><div class="p">'+Number(c.price).toLocaleString()+' <small>원</small></div>'+fmtChg(c.changePct)+'</div>'+
         '<div class="co-biz">'+esc(c.biz)+'</div>'+
+        staleNote+
       '</div>'+
 
       '<div class="chips">'+
@@ -437,6 +457,43 @@ function applyMeta(asOf){
   document.getElementById('stDate').textContent = asOf; // 시:분 포함 기준시각
 }
 
+/* [KYY_FOCUS_HEALTH_20260813] 수집 실패를 화면에 드러낸다.
+   왜: data.json 이 '떠 있기만 하면' 화면은 성공처럼 보였다. 실제로 2026-08-13 실행에서
+   DART 가 통째로 빠졌을 때 카드의 재무표만 조용히 비어 아무도 눈치채지 못했다.
+   세 가지를 각각 다르게 알린다 — (1) 소스 실패 (2) 지난 값 표시 (3) 아예 갱신 정지. */
+function applyHealth(js){
+  var bar = document.getElementById('staleBar');
+  var LABEL = {dart:'DART(재무·공시)', naver:'네이버(시세·뉴스)'};
+  var msgs = [];
+
+  var h = js.health || {};
+  Object.keys(h).forEach(function(k){
+    if(h[k] && h[k].ok === false){
+      msgs.push('<b>'+esc(LABEL[k]||k)+' 수집 실패</b>'+(h[k].since?'('+esc(h[k].since)+'부터)':''));
+    }
+  });
+
+  var staleCount = (js.items||[]).filter(function(it){ return it.stale; }).length;
+  if(staleCount){ msgs.push(staleCount+'종목은 마지막 정상값을 표시 중'); }
+
+  // 갱신 자체가 멎은 경우(워크플로 중단·스케줄 유실). asOfUtc 가 있을 때만 판정한다
+  // — asOf 는 러너의 UTC 시계라 브라우저(KST)에서 그대로 빼면 9시간이 어긋난다.
+  if(js.asOfUtc){
+    var ageH = (Date.now() - new Date(js.asOfUtc).getTime()) / 3600000;
+    if(ageH >= 6){
+      msgs.push('<b>'+ageH.toFixed(0)+'시간째 갱신 없음</b> — GitHub Actions 예약 실행을 확인하세요');
+    }
+  }
+
+  if(msgs.length){
+    bar.innerHTML = '⚠ ' + msgs.join(' · ') +
+      '. 값을 지어내지 않고 마지막 정상값을 그대로 두었습니다(카드마다 기준시각 표시).';
+    bar.style.display = '';
+  }else{
+    bar.style.display = 'none';
+  }
+}
+
 function loadData(){
   // 캐시 무력화용 쿼리스트링(Pages 캐시로 옛 data.json이 잡히는 것 방지)
   fetch('./data.json?t=' + Date.now(), {cache:'no-store'})
@@ -445,6 +502,7 @@ function loadData(){
       if(js && Array.isArray(js.items) && js.items.length){
         DATA = js.items;
         applyMeta(js.asOf);
+        applyHealth(js);
         document.getElementById('sampleBar').style.display = 'none';
       } else {
         throw new Error('empty items');
@@ -454,7 +512,23 @@ function loadData(){
       // data.json 이 아직 없거나 오류 → 샘플 폴백 + 안내줄 표시
       console.warn('data.json 로드 실패, 샘플 사용:', err);
       DATA = SAMPLE_DATA;
-      document.getElementById('sampleBar').style.display = '';
+      // [KYY_FOCUS_HEALTH_20260813] 로컬 파일로 열었을 때가 압도적으로 흔한 원인인데
+      //   예전 안내문은 "Actions 가 곧 채운다"고만 해서 사이트가 고장난 걸로 읽혔다.
+      //   (file:// 은 브라우저 보안정책상 같은 폴더의 data.json 도 fetch 하지 못한다.)
+      var bar = document.getElementById('sampleBar');
+      if(location.protocol === 'file:'){
+        bar.innerHTML = '⚠ <b>로컬 파일(file://)로 열어서</b> data.json 을 읽지 못했습니다 — '+
+          '브라우저 보안정책상 같은 폴더의 파일도 fetch 할 수 없습니다. 지금 화면은 '+
+          '<b>레이아웃 확인용 샘플(2026-07-03)</b>입니다.<br>실데이터는 '+
+          '<a href="https://rladuddbssla.github.io/kyy-focus/" style="color:inherit;">'+
+          'rladuddbssla.github.io/kyy-focus</a> 에서 보세요.';
+      }else{
+        bar.innerHTML = '⚠ <b>data.json</b>을 불러오지 못해 <b>레이아웃 확인용 샘플'+
+          '(2026-07-03)</b>을 표시 중입니다. ('+esc(String(err&&err.message||err))+')<br>'+
+          'GitHub Actions 의 update-focus-data 실행 이력을 확인하세요.';
+      }
+      bar.style.display = '';
+      document.getElementById('staleBar').style.display = 'none';
     })
     .finally(function(){ render(); });
 }
