@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-08-14 02:47",
-  "asOfUtc": "2026-08-14T02:47:01Z",
+  "asOf": "2026-08-14 05:04",
+  "asOfUtc": "2026-08-14T05:04:21Z",
   "source": "DART · 네이버",
   "health": {
     "dart": {
@@ -29,11 +29,11 @@
       "market": "KOSPI",
       "tag": "여성 이너웨어",
       "biz": "여성 이너웨어(속옷) 제조·유통 · 브랜드 비비안/샌디즈",
-      "price": 5750,
-      "changePct": -2.04,
+      "price": 5810,
+      "changePct": -1.02,
       "metrics": {
         "ROE": "-5.9%",
-        "PBR": "0.22",
+        "PBR": "0.23",
         "debt": "198%",
         "current": "82%",
         "foreign": "0.00%"
@@ -126,8 +126,8 @@
       "market": "KOSDAQ",
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
-      "price": 2960,
-      "changePct": -1.33,
+      "price": 2950,
+      "changePct": -1.67,
       "metrics": {
         "ROE": "6.9%",
         "PBR": "0.24",
@@ -223,11 +223,11 @@
       "market": "KOSPI",
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
-      "price": 5050,
-      "changePct": 0.2,
+      "price": 5090,
+      "changePct": 0.99,
       "metrics": {
         "ROE": "12.8%",
-        "PBR": "1.30",
+        "PBR": "1.31",
         "debt": "50%",
         "foreign": "0.25%"
       },
@@ -295,11 +295,11 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 939,
-      "changePct": -1.26,
+      "price": 997,
+      "changePct": 4.84,
       "metrics": {
         "ROE": "-1.4%",
-        "PBR": "1.79",
+        "PBR": "1.90",
         "debt": "94%",
         "current": "96%",
         "foreign": "0.85%"
@@ -392,12 +392,12 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2515,
-      "changePct": -3.27,
+      "price": 2460,
+      "changePct": -5.38,
       "metrics": {
         "ROE": "0.9%",
         "PBR": "0.27",
-        "PER": "1.13",
+        "PER": "1.11",
         "debt": "53%",
         "foreign": "1.03%"
       },
