@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-08-20 03:13",
-  "asOfUtc": "2026-08-20T03:13:52Z",
+  "asOf": "2026-08-20 04:01",
+  "asOfUtc": "2026-08-20T04:01:12Z",
   "source": "DART · 네이버",
   "health": {
     "dart": {
@@ -29,8 +29,8 @@
       "market": "KOSPI",
       "tag": "여성 이너웨어",
       "biz": "여성 이너웨어(속옷) 제조·유통 · 브랜드 비비안/샌디즈",
-      "price": 5040,
-      "changePct": -12.2,
+      "price": 5100,
+      "changePct": -11.15,
       "metrics": {
         "ROE": "-5.9%",
         "PBR": "0.20",
@@ -222,12 +222,12 @@
       "market": "KOSPI",
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
-      "price": 4720,
-      "changePct": 0.43,
+      "price": 4770,
+      "changePct": 1.49,
       "metrics": {
         "ROE": "12.8%",
-        "PBR": "1.06",
-        "PER": "8.19",
+        "PBR": "1.07",
+        "PER": "8.28",
         "debt": "50%",
         "foreign": "0.23%"
       },
@@ -307,8 +307,8 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 959,
-      "changePct": -5.14,
+      "price": 958,
+      "changePct": -5.24,
       "metrics": {
         "ROE": "-1.4%",
         "PBR": "1.94",
@@ -386,12 +386,12 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2365,
-      "changePct": 0.42,
+      "price": 2345,
+      "changePct": -0.42,
       "metrics": {
         "ROE": "0.9%",
         "PBR": "0.26",
-        "PER": "1.61",
+        "PER": "1.60",
         "debt": "53%",
         "foreign": "1.02%"
       },
