@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-08-21 04:04",
-  "asOfUtc": "2026-08-21T04:04:43Z",
+  "asOf": "2026-08-21 05:46",
+  "asOfUtc": "2026-08-21T05:46:57Z",
   "source": "DART · 네이버",
   "health": {
     "dart": {
@@ -29,8 +29,8 @@
       "market": "KOSPI",
       "tag": "여성 이너웨어",
       "biz": "여성 이너웨어(속옷) 제조·유통 · 브랜드 비비안/샌디즈",
-      "price": 4655,
-      "changePct": -6.9,
+      "price": 4660,
+      "changePct": -6.8,
       "metrics": {
         "ROE": "-5.9%",
         "PBR": "0.18",
@@ -68,28 +68,28 @@
       "finNote": "자산가치(저PBR) 대비로는 초저평가 구간이나, 영업 적자 지속 여부가 핵심 리스크. '재무 다이어트'로 부채·유동성은 개선 방향.",
       "disc": [
         {
+          "date": "2026-08-21",
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "plain": "경영진·대주주의 자기회사 주식 보유 수량 변동 신고.",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260821000309"
+        },
+        {
+          "date": "2026-08-21",
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "plain": "경영진·대주주의 자기회사 주식 보유 수량 변동 신고.",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260821000303"
+        },
+        {
+          "date": "2026-08-21",
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "plain": "경영진·대주주의 자기회사 주식 보유 수량 변동 신고.",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260821000300"
+        },
+        {
           "date": "2026-08-14",
           "title": "반기보고서 (2026.06)",
           "plain": "상반기 실적·재무를 담은 정기 보고서.",
           "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814002830"
-        },
-        {
-          "date": "2026-08-12",
-          "title": "[기재정정]주요사항보고서(무상증자결정)",
-          "plain": "합병·분할·증자·감자 등 회사에 중대한 변화가 생겼다는 보고.",
-          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260812000624"
-        },
-        {
-          "date": "2026-08-06",
-          "title": "전환가액ㆍ신주인수권행사가액ㆍ교환가액의조정(안내공시)",
-          "plain": "정해진 가격에 새 주식을 살 수 있는 권리가 붙은 채권(BW) 발행. 향후 주식 수 증가 요인.",
-          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260806800326"
-        },
-        {
-          "date": "2026-07-30",
-          "title": "임시주주총회결과",
-          "plain": "정기·수시 공시 사항. 원문에서 상세 내용을 확인하세요.",
-          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260730800420"
         }
       ],
       "news": [
@@ -126,8 +126,8 @@
       "market": "KOSDAQ",
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
-      "price": 2715,
-      "changePct": -1.27,
+      "price": 2695,
+      "changePct": -2.0,
       "metrics": {
         "ROE": "-5.0%",
         "PBR": "0.22",
@@ -222,12 +222,12 @@
       "market": "KOSPI",
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
-      "price": 4720,
-      "changePct": -1.87,
+      "price": 4700,
+      "changePct": -2.29,
       "metrics": {
         "ROE": "12.8%",
         "PBR": "1.06",
-        "PER": "8.19",
+        "PER": "8.16",
         "debt": "50%",
         "foreign": "0.24%"
       },
@@ -307,11 +307,11 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 1009,
-      "changePct": -0.79,
+      "price": 996,
+      "changePct": -2.06,
       "metrics": {
         "ROE": "-1.4%",
-        "PBR": "2.04",
+        "PBR": "2.02",
         "debt": "94%",
         "current": "96%",
         "foreign": "0.80%"
@@ -386,12 +386,12 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2235,
-      "changePct": -4.28,
+      "price": 2240,
+      "changePct": -4.07,
       "metrics": {
         "ROE": "0.9%",
         "PBR": "0.25",
-        "PER": "1.52",
+        "PER": "1.53",
         "debt": "53%",
         "foreign": "1.02%"
       },
