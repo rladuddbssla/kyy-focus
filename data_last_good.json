@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-08-24 05:55",
-  "asOfUtc": "2026-08-24T05:55:57Z",
+  "asOf": "2026-08-24 07:18",
+  "asOfUtc": "2026-08-24T07:18:51Z",
   "source": "DART · 네이버",
   "health": {
     "dart": {
@@ -29,8 +29,8 @@
       "market": "KOSPI",
       "tag": "여성 이너웨어",
       "biz": "여성 이너웨어(속옷) 제조·유통 · 브랜드 비비안/샌디즈",
-      "price": 4530,
-      "changePct": -5.62,
+      "price": 4540,
+      "changePct": -5.42,
       "metrics": {
         "ROE": "-5.9%",
         "PBR": "0.25",
@@ -68,6 +68,12 @@
       "finNote": "자산가치(저PBR) 대비로는 초저평가 구간이나, 영업 적자 지속 여부가 핵심 리스크. '재무 다이어트'로 부채·유동성은 개선 방향.",
       "disc": [
         {
+          "date": "2026-08-24",
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "plain": "경영진·대주주의 자기회사 주식 보유 수량 변동 신고.",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260824000229"
+        },
+        {
           "date": "2026-08-21",
           "title": "임원ㆍ주요주주특정증권등소유상황보고서",
           "plain": "경영진·대주주의 자기회사 주식 보유 수량 변동 신고.",
@@ -84,12 +90,6 @@
           "title": "임원ㆍ주요주주특정증권등소유상황보고서",
           "plain": "경영진·대주주의 자기회사 주식 보유 수량 변동 신고.",
           "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260821000300"
-        },
-        {
-          "date": "2026-08-14",
-          "title": "반기보고서 (2026.06)",
-          "plain": "상반기 실적·재무를 담은 정기 보고서.",
-          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814002830"
         }
       ],
       "news": [
@@ -126,8 +126,8 @@
       "market": "KOSDAQ",
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
-      "price": 2680,
-      "changePct": -2.19,
+      "price": 2700,
+      "changePct": -1.46,
       "metrics": {
         "ROE": "-5.0%",
         "PBR": "0.22",
@@ -222,12 +222,12 @@
       "market": "KOSPI",
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
-      "price": 4890,
-      "changePct": 4.04,
+      "price": 4905,
+      "changePct": 4.36,
       "metrics": {
         "ROE": "12.8%",
         "PBR": "1.10",
-        "PER": "8.49",
+        "PER": "8.52",
         "debt": "50%",
         "foreign": "0.25%"
       },
@@ -307,11 +307,11 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 992,
-      "changePct": 0.2,
+      "price": 990,
+      "changePct": 0.0,
       "metrics": {
         "ROE": "-1.4%",
-        "PBR": "2.01",
+        "PBR": "2.00",
         "debt": "94%",
         "current": "96%",
         "foreign": "0.35%"
@@ -386,8 +386,8 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2300,
-      "changePct": -0.43,
+      "price": 2310,
+      "changePct": 0.0,
       "metrics": {
         "ROE": "0.9%",
         "PBR": "0.25",
