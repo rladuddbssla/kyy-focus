@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-08-25 22:43",
-  "asOfUtc": "2026-08-25T22:43:52Z",
+  "asOf": "2026-08-25 23:40",
+  "asOfUtc": "2026-08-25T23:40:26Z",
   "source": "DART · 네이버",
   "health": {
     "dart": {
@@ -127,12 +127,12 @@
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
       "price": 2670,
-      "changePct": -1.11,
+      "changePct": 0.0,
       "metrics": {
         "ROE": "-5.0%",
         "PBR": "0.21",
         "debt": "21%",
-        "foreign": "0.91%"
+        "foreign": "0.87%"
       },
       "fin": [
         {
@@ -223,13 +223,13 @@
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
       "price": 5250,
-      "changePct": 7.03,
+      "changePct": 0.0,
       "metrics": {
         "ROE": "12.8%",
         "PBR": "1.18",
         "PER": "9.11",
         "debt": "50%",
-        "foreign": "0.26%"
+        "foreign": "0.28%"
       },
       "fin": [
         {
@@ -308,13 +308,13 @@
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
       "price": 1015,
-      "changePct": 2.53,
+      "changePct": 0.0,
       "metrics": {
         "ROE": "-1.4%",
         "PBR": "2.05",
         "debt": "94%",
         "current": "96%",
-        "foreign": "0.44%"
+        "foreign": "0.40%"
       },
       "fin": [
         {
@@ -387,13 +387,13 @@
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
       "price": 2375,
-      "changePct": 2.81,
+      "changePct": 0.0,
       "metrics": {
         "ROE": "0.9%",
         "PBR": "0.26",
         "PER": "1.62",
         "debt": "53%",
-        "foreign": "1.02%"
+        "foreign": "1.03%"
       },
       "fin": [
         {
