@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-08-25 23:40",
-  "asOfUtc": "2026-08-25T23:40:26Z",
+  "asOf": "2026-08-26 02:01",
+  "asOfUtc": "2026-08-26T02:01:22Z",
   "source": "DART · 네이버",
   "health": {
     "dart": {
@@ -29,8 +29,8 @@
       "market": "KOSPI",
       "tag": "여성 이너웨어",
       "biz": "여성 이너웨어(속옷) 제조·유통 · 브랜드 비비안/샌디즈",
-      "price": 4540,
-      "changePct": 0.0,
+      "price": 4525,
+      "changePct": -0.33,
       "metrics": {
         "ROE": "-5.9%",
         "PBR": "0.25",
@@ -126,8 +126,8 @@
       "market": "KOSDAQ",
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
-      "price": 2670,
-      "changePct": 0.0,
+      "price": 2610,
+      "changePct": -2.25,
       "metrics": {
         "ROE": "-5.0%",
         "PBR": "0.21",
@@ -197,15 +197,15 @@
         },
         {
           "date": "2026-06-29",
-          "title": "[핀포인트] [아이오케이이엔엠] 시너지 없는 신사업, 영업손실이 매출 ...",
-          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
-          "url": "https://news.dealsitetv.com/articles/172500"
-        },
-        {
-          "date": "2026-06-29",
           "title": "[핀포인트] [아이오케이이엔엠] 감자 꼼수로 동전주 탈피…‘시한부 생...",
           "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
           "url": "https://news.dealsitetv.com/articles/172476"
+        },
+        {
+          "date": "2026-06-29",
+          "title": "[핀포인트] [아이오케이이엔엠] 시너지 없는 신사업, 영업손실이 매출 ...",
+          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
+          "url": "https://news.dealsitetv.com/articles/172500"
         },
         {
           "date": "2026-06-23",
@@ -307,8 +307,8 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 1015,
-      "changePct": 0.0,
+      "price": 1014,
+      "changePct": -0.1,
       "metrics": {
         "ROE": "-1.4%",
         "PBR": "2.05",
@@ -386,12 +386,12 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2375,
-      "changePct": 0.0,
+      "price": 2325,
+      "changePct": -2.11,
       "metrics": {
         "ROE": "0.9%",
         "PBR": "0.26",
-        "PER": "1.62",
+        "PER": "1.58",
         "debt": "53%",
         "foreign": "1.03%"
       },
