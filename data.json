@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-09-03 21:41",
-  "asOfUtc": "2026-09-03T21:41:57Z",
+  "asOf": "2026-09-04 00:07",
+  "asOfUtc": "2026-09-04T00:07:54Z",
   "source": "DART · 네이버",
   "health": {
     "dart": {
@@ -29,8 +29,8 @@
       "market": "KOSPI",
       "tag": "여성 이너웨어",
       "biz": "여성 이너웨어(속옷) 제조·유통 · 브랜드 비비안/샌디즈",
-      "price": 4655,
-      "changePct": -1.38,
+      "price": 4690,
+      "changePct": 0.75,
       "metrics": {
         "ROE": "-5.9%",
         "PBR": "0.26",
@@ -121,12 +121,12 @@
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
       "price": 2625,
-      "changePct": 0.96,
+      "changePct": 0.0,
       "metrics": {
         "ROE": "-5.0%",
         "PBR": "0.23",
         "debt": "21%",
-        "foreign": "0.80%"
+        "foreign": "0.78%"
       },
       "fin": [
         {
@@ -191,15 +191,15 @@
         },
         {
           "date": "2026-06-29",
-          "title": "[핀포인트] [아이오케이이엔엠] 시너지 없는 신사업, 영업손실이 매출 ...",
-          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
-          "url": "https://news.dealsitetv.com/articles/172500"
-        },
-        {
-          "date": "2026-06-29",
           "title": "[핀포인트] [아이오케이이엔엠] 감자 꼼수로 동전주 탈피…‘시한부 생...",
           "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
           "url": "https://news.dealsitetv.com/articles/172476"
+        },
+        {
+          "date": "2026-06-29",
+          "title": "[핀포인트] [아이오케이이엔엠] 시너지 없는 신사업, 영업손실이 매출 ...",
+          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
+          "url": "https://news.dealsitetv.com/articles/172500"
         },
         {
           "date": "2026-06-23",
@@ -216,12 +216,12 @@
       "market": "KOSPI",
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
-      "price": 4705,
-      "changePct": -1.57,
+      "price": 4745,
+      "changePct": 0.85,
       "metrics": {
         "ROE": "12.8%",
-        "PBR": "1.06",
-        "PER": "8.17",
+        "PBR": "1.07",
+        "PER": "8.24",
         "debt": "50%",
         "foreign": "0.23%"
       },
@@ -307,14 +307,14 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 1317,
-      "changePct": -1.64,
+      "price": 1313,
+      "changePct": -0.3,
       "metrics": {
         "ROE": "-1.4%",
-        "PBR": "2.67",
+        "PBR": "2.66",
         "debt": "94%",
         "current": "96%",
-        "foreign": "0.80%"
+        "foreign": "0.76%"
       },
       "fin": [
         {
@@ -392,12 +392,12 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2380,
-      "changePct": -0.83,
+      "price": 2395,
+      "changePct": 0.63,
       "metrics": {
         "ROE": "0.9%",
         "PBR": "0.26",
-        "PER": "1.62",
+        "PER": "1.63",
         "debt": "53%",
         "foreign": "1.08%"
       },
