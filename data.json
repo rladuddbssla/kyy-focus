@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-09-14 22:33",
-  "asOfUtc": "2026-09-14T22:33:56Z",
+  "asOf": "2026-09-15 01:30",
+  "asOfUtc": "2026-09-15T01:30:17Z",
   "source": "DART · 네이버",
   "health": {
     "dart": {
@@ -29,11 +29,11 @@
       "market": "KOSPI",
       "tag": "여성 이너웨어",
       "biz": "여성 이너웨어(속옷) 제조·유통 · 브랜드 비비안/샌디즈",
-      "price": 5450,
-      "changePct": 1.3,
+      "price": 5190,
+      "changePct": -3.71,
       "metrics": {
         "ROE": "-5.9%",
-        "PBR": "0.30",
+        "PBR": "0.29",
         "debt": "198%",
         "current": "82%",
         "foreign": "0.00%"
@@ -108,13 +108,13 @@
       "market": "KOSDAQ",
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
-      "price": 2660,
-      "changePct": -0.75,
+      "price": 2605,
+      "changePct": -2.07,
       "metrics": {
         "ROE": "-5.0%",
         "PBR": "0.23",
         "debt": "21%",
-        "foreign": "0.74%"
+        "foreign": "0.69%"
       },
       "fin": [
         {
@@ -198,14 +198,14 @@
       "market": "KOSPI",
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
-      "price": 4650,
-      "changePct": -1.59,
+      "price": 4590,
+      "changePct": -1.29,
       "metrics": {
         "ROE": "12.8%",
-        "PBR": "1.04",
-        "PER": "8.07",
+        "PBR": "1.03",
+        "PER": "7.97",
         "debt": "50%",
-        "foreign": "0.22%"
+        "foreign": "0.21%"
       },
       "fin": [
         {
@@ -250,9 +250,9 @@
           "sum": "공급·납품 계약 재료. 실제 매출 반영 규모 확인."
         },
         {
-          "date": "2026-06-24",
-          "title": "차AI헬스케어, 대규모 상품 공급 계약에 이틀째 급등[특징주]",
-          "url": "https://n.news.naver.com/mnews/article/018/0006313572",
+          "date": "2026-06-23",
+          "title": "[특징주] 차AI헬스케어, 급락장에도 대규모 장기 공급계약에 상한가(...",
+          "url": "https://n.news.naver.com/mnews/article/001/0016154292",
           "sum": "공급·납품 계약 재료. 실제 매출 반영 규모 확인."
         }
       ],
@@ -264,14 +264,14 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 1223,
-      "changePct": -7.14,
+      "price": 1231,
+      "changePct": 0.65,
       "metrics": {
         "ROE": "-1.4%",
-        "PBR": "2.48",
+        "PBR": "2.49",
         "debt": "94%",
         "current": "96%",
-        "foreign": "0.77%"
+        "foreign": "0.80%"
       },
       "fin": [
         {
@@ -349,14 +349,14 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2450,
-      "changePct": -0.81,
+      "price": 2370,
+      "changePct": -0.21,
       "metrics": {
         "ROE": "0.9%",
-        "PBR": "0.27",
-        "PER": "1.67",
+        "PBR": "0.26",
+        "PER": "1.62",
         "debt": "53%",
-        "foreign": "1.08%"
+        "foreign": "1.06%"
       },
       "fin": [
         {
