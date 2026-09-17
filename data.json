@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-09-17 00:32",
-  "asOfUtc": "2026-09-17T00:32:14Z",
+  "asOf": "2026-09-17 06:11",
+  "asOfUtc": "2026-09-17T06:11:33Z",
   "source": "DART · 네이버",
   "health": {
     "dart": {
@@ -108,11 +108,11 @@
       "market": "KOSDAQ",
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
-      "price": 2525,
-      "changePct": -1.56,
+      "price": 2440,
+      "changePct": -4.87,
       "metrics": {
         "ROE": "-5.0%",
-        "PBR": "0.22",
+        "PBR": "0.21",
         "debt": "21%",
         "foreign": "0.72%"
       },
@@ -179,15 +179,15 @@
         },
         {
           "date": "2026-06-29",
-          "title": "[핀포인트] [아이오케이이엔엠] 시너지 없는 신사업, 영업손실이 매출 ...",
-          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
-          "url": "https://news.dealsitetv.com/articles/172500"
-        },
-        {
-          "date": "2026-06-29",
           "title": "[핀포인트] [아이오케이이엔엠] 감자 꼼수로 동전주 탈피…‘시한부 생...",
           "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
           "url": "https://news.dealsitetv.com/articles/172476"
+        },
+        {
+          "date": "2026-06-29",
+          "title": "[핀포인트] [아이오케이이엔엠] 시너지 없는 신사업, 영업손실이 매출 ...",
+          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
+          "url": "https://news.dealsitetv.com/articles/172500"
         },
         {
           "date": "2026-06-23",
@@ -204,12 +204,12 @@
       "market": "KOSPI",
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
-      "price": 4985,
-      "changePct": 6.52,
+      "price": 4650,
+      "changePct": -0.64,
       "metrics": {
         "ROE": "12.8%",
-        "PBR": "1.12",
-        "PER": "8.65",
+        "PBR": "1.04",
+        "PER": "8.07",
         "debt": "50%",
         "foreign": "0.21%"
       },
@@ -270,11 +270,11 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 1230,
-      "changePct": 3.89,
+      "price": 1207,
+      "changePct": 1.94,
       "metrics": {
         "ROE": "-1.4%",
-        "PBR": "2.49",
+        "PBR": "2.44",
         "debt": "94%",
         "current": "96%",
         "foreign": "0.65%"
@@ -335,22 +335,28 @@
       ],
       "news": [
         {
-          "date": "2026-09-16",
-          "title": "[속보] 앤씨앤, 100억원 규모 제3자배정 유상증자…비투엔 최대주주 변...",
-          "sum": "자금 조달(증자) 재료. 규모·용도와 지분 희석 여부 확인.",
-          "url": "https://www.cbci.co.kr/news/articleView.html?idxno=607416"
+          "date": "2026-09-17",
+          "title": "[ET특징주] 앤씨앤, 비투엔에 피인수… 주가 上",
+          "sum": "M&A·지분 인수 이슈. 사업 확장/재편 신호.",
+          "url": "https://www.etnews.com/20260917000251"
         },
         {
-          "date": "2026-08-28",
-          "title": "비투엔 주가, 8월 28일 1,159원 22.00% 상승 마감",
-          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
-          "url": "https://www.joongangenews.com/news/articleView.html?idxno=543800"
+          "date": "2026-09-17",
+          "title": "앤씨앤 주가 장중 상한가, AI솔루션업체 비투엔에 인수된다는 소식에 기...",
+          "sum": "M&A·지분 인수 이슈. 사업 확장/재편 신호.",
+          "url": "https://www.businesspost.co.kr/BP?command=article_view&num=447428"
         },
         {
-          "date": "2026-08-28",
-          "title": "[골든크로스 종목] 에스피소프트 비투엔 신풍제약우 헥토파이낸셜 유니...",
-          "sum": "관련 뉴스. 실제 실적·공시로 이어지는지 확인 필요.",
-          "url": "https://www.pinpointnews.co.kr/news/articleView.html?idxno=481619"
+          "date": "2026-09-17",
+          "title": "[특징주] 앤씨앤, 비투엔 최대주주 등극 소식에 '상한가'",
+          "sum": "지배구조 변동. 경영권·전략 방향의 큰 변수.",
+          "url": "https://www.cstimes.com/news/articleView.html?idxno=721080"
+        },
+        {
+          "date": "2026-09-17",
+          "title": "앤씨앤, 비투엔 피인수 소식에 상한가",
+          "sum": "M&A·지분 인수 이슈. 사업 확장/재편 신호.",
+          "url": "https://www.hankyung.com/article/2026091705336"
         }
       ],
       "summary": "AI·빅데이터 데이터 솔루션이라는 본업 위에 스테이블코인 결제·글로벌 ERP 제휴 같은 테마성 신사업을 얹은 종목입니다. 흑자는 유지하나 이익 규모가 작고, 유동성·최대주주 변동이 리스크 요인입니다. 신사업 뉴스가 실제 계약·매출로 이어지는지 숫자로 확인하는 접근이 필요합니다."
@@ -361,12 +367,12 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2380,
-      "changePct": 0.21,
+      "price": 2400,
+      "changePct": 1.05,
       "metrics": {
         "ROE": "0.9%",
         "PBR": "0.26",
-        "PER": "1.62",
+        "PER": "1.64",
         "debt": "53%",
         "foreign": "1.03%"
       },
