@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-09-27 22:07",
-  "asOfUtc": "2026-09-27T22:07:24Z",
+  "asOf": "2026-09-28 00:47",
+  "asOfUtc": "2026-09-28T00:47:13Z",
   "source": "DART · 네이버",
   "health": {
     "dart": {
@@ -29,11 +29,11 @@
       "market": "KOSPI",
       "tag": "여성 이너웨어",
       "biz": "여성 이너웨어(속옷) 제조·유통 · 브랜드 비비안/샌디즈",
-      "price": 3785,
-      "changePct": -1.82,
+      "price": 3700,
+      "changePct": -2.25,
       "metrics": {
         "ROE": "-5.9%",
-        "PBR": "0.21",
+        "PBR": "0.20",
         "debt": "198%",
         "current": "82%",
         "foreign": "0.00%"
@@ -114,11 +114,11 @@
       "market": "KOSDAQ",
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
-      "price": 2700,
-      "changePct": -19.4,
+      "price": 2715,
+      "changePct": 0.56,
       "metrics": {
         "ROE": "-5.0%",
-        "PBR": "0.23",
+        "PBR": "0.24",
         "debt": "21%",
         "foreign": "0.81%"
       },
@@ -210,14 +210,14 @@
       "market": "KOSPI",
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
-      "price": 4745,
-      "changePct": 1.17,
+      "price": 4940,
+      "changePct": 4.66,
       "metrics": {
         "ROE": "12.8%",
-        "PBR": "1.07",
-        "PER": "8.24",
+        "PBR": "1.11",
+        "PER": "8.58",
         "debt": "50%",
-        "foreign": "0.20%"
+        "foreign": "0.24%"
       },
       "fin": [
         {
@@ -276,14 +276,14 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 1228,
-      "changePct": 3.28,
+      "price": 1265,
+      "changePct": -1.09,
       "metrics": {
         "ROE": "-1.4%",
-        "PBR": "2.49",
+        "PBR": "2.56",
         "debt": "94%",
         "current": "96%",
-        "foreign": "0.50%"
+        "foreign": "0.59%"
       },
       "fin": [
         {
@@ -331,12 +331,6 @@
           "title": "[기재정정]최대주주변경을수반하는주식양수도계약체결",
           "plain": "회사의 실질적 주인(최대주주)이 바뀌거나 지분이 변동됐다는 신고. 경영권·향후 전략의 큰 변수.",
           "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260911900405"
-        },
-        {
-          "date": "2026-08-28",
-          "title": "[기재정정]주식병합결정              (철회)",
-          "plain": "정기·수시 공시 사항. 원문에서 상세 내용을 확인하세요.",
-          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260828900196"
         }
       ],
       "news": [
@@ -373,14 +367,14 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2530,
-      "changePct": 3.69,
+      "price": 2495,
+      "changePct": -0.99,
       "metrics": {
         "ROE": "0.9%",
-        "PBR": "0.28",
-        "PER": "1.72",
+        "PBR": "0.27",
+        "PER": "1.70",
         "debt": "53%",
-        "foreign": "1.04%"
+        "foreign": "1.05%"
       },
       "fin": [
         {
