@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-09-28 06:50",
-  "asOfUtc": "2026-09-28T06:50:10Z",
+  "asOf": "2026-09-28 15:24",
+  "asOfUtc": "2026-09-28T15:24:12Z",
   "source": "DART · 네이버",
   "health": {
     "dart": {
@@ -210,12 +210,12 @@
       "market": "KOSPI",
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
-      "price": 5090,
-      "changePct": 7.84,
+      "price": 5110,
+      "changePct": 8.26,
       "metrics": {
         "ROE": "12.8%",
-        "PBR": "1.14",
-        "PER": "8.84",
+        "PBR": "1.15",
+        "PER": "8.87",
         "debt": "50%",
         "foreign": "0.24%"
       },
@@ -276,11 +276,11 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 1258,
-      "changePct": -1.64,
+      "price": 1231,
+      "changePct": -3.75,
       "metrics": {
         "ROE": "-1.4%",
-        "PBR": "2.55",
+        "PBR": "2.49",
         "debt": "94%",
         "current": "96%",
         "foreign": "0.59%"
@@ -367,12 +367,12 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2500,
-      "changePct": -0.79,
+      "price": 2595,
+      "changePct": 2.98,
       "metrics": {
         "ROE": "0.9%",
-        "PBR": "0.28",
-        "PER": "1.70",
+        "PBR": "0.29",
+        "PER": "1.77",
         "debt": "53%",
         "foreign": "1.05%"
       },
