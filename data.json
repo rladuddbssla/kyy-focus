@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-09-28 22:02",
-  "asOfUtc": "2026-09-28T22:02:28Z",
+  "asOf": "2026-09-29 01:58",
+  "asOfUtc": "2026-09-29T01:58:59Z",
   "source": "DART · 네이버",
   "health": {
     "dart": {
@@ -29,8 +29,8 @@
       "market": "KOSPI",
       "tag": "여성 이너웨어",
       "biz": "여성 이너웨어(속옷) 제조·유통 · 브랜드 비비안/샌디즈",
-      "price": 3620,
-      "changePct": -4.36,
+      "price": 3570,
+      "changePct": -1.38,
       "metrics": {
         "ROE": "-5.9%",
         "PBR": "0.20",
@@ -114,13 +114,13 @@
       "market": "KOSDAQ",
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
-      "price": 2885,
-      "changePct": 6.85,
+      "price": 2875,
+      "changePct": -0.35,
       "metrics": {
         "ROE": "-5.0%",
         "PBR": "0.25",
         "debt": "21%",
-        "foreign": "0.81%"
+        "foreign": "0.96%"
       },
       "fin": [
         {
@@ -210,14 +210,14 @@
       "market": "KOSPI",
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
-      "price": 5110,
-      "changePct": 8.26,
+      "price": 5060,
+      "changePct": -0.59,
       "metrics": {
         "ROE": "12.8%",
-        "PBR": "1.15",
-        "PER": "8.87",
+        "PBR": "1.14",
+        "PER": "8.78",
         "debt": "50%",
-        "foreign": "0.24%"
+        "foreign": "0.28%"
       },
       "fin": [
         {
@@ -262,9 +262,9 @@
           "sum": "공급·납품 계약 재료. 실제 매출 반영 규모 확인."
         },
         {
-          "date": "2026-06-24",
-          "title": "차AI헬스케어, 대규모 상품 공급 계약에 이틀째 급등[특징주]",
-          "url": "https://n.news.naver.com/mnews/article/018/0006313572",
+          "date": "2026-06-23",
+          "title": "[특징주] 차AI헬스케어, 급락장에도 대규모 장기 공급계약에 상한가(...",
+          "url": "https://n.news.naver.com/mnews/article/001/0016154292",
           "sum": "공급·납품 계약 재료. 실제 매출 반영 규모 확인."
         }
       ],
@@ -276,14 +276,14 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 1231,
-      "changePct": -3.75,
+      "price": 1212,
+      "changePct": -3.66,
       "metrics": {
         "ROE": "-1.4%",
-        "PBR": "2.49",
+        "PBR": "2.45",
         "debt": "94%",
         "current": "96%",
-        "foreign": "0.59%"
+        "foreign": "0.51%"
       },
       "fin": [
         {
@@ -367,12 +367,12 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2595,
-      "changePct": 2.98,
+      "price": 2495,
+      "changePct": -0.2,
       "metrics": {
         "ROE": "0.9%",
-        "PBR": "0.29",
-        "PER": "1.77",
+        "PBR": "0.27",
+        "PER": "1.70",
         "debt": "53%",
         "foreign": "1.05%"
       },
