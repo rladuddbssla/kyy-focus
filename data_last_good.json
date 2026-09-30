@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-09-29 20:44",
-  "asOfUtc": "2026-09-29T20:44:51Z",
+  "asOf": "2026-09-30 00:28",
+  "asOfUtc": "2026-09-30T00:28:57Z",
   "source": "DART · 네이버",
   "health": {
     "dart": {
@@ -29,11 +29,11 @@
       "market": "KOSPI",
       "tag": "여성 이너웨어",
       "biz": "여성 이너웨어(속옷) 제조·유통 · 브랜드 비비안/샌디즈",
-      "price": 3800,
-      "changePct": 4.97,
+      "price": 4165,
+      "changePct": 9.61,
       "metrics": {
         "ROE": "-5.9%",
-        "PBR": "0.21",
+        "PBR": "0.23",
         "debt": "198%",
         "current": "82%",
         "foreign": "0.00%"
@@ -114,13 +114,13 @@
       "market": "KOSDAQ",
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
-      "price": 2895,
-      "changePct": 0.35,
+      "price": 2990,
+      "changePct": 3.28,
       "metrics": {
         "ROE": "-5.0%",
-        "PBR": "0.25",
+        "PBR": "0.26",
         "debt": "21%",
-        "foreign": "0.96%"
+        "foreign": "1.10%"
       },
       "fin": [
         {
@@ -210,14 +210,14 @@
       "market": "KOSPI",
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
-      "price": 5120,
-      "changePct": 0.59,
+      "price": 5080,
+      "changePct": -1.55,
       "metrics": {
         "ROE": "12.8%",
-        "PBR": "1.15",
-        "PER": "8.89",
+        "PBR": "1.14",
+        "PER": "8.82",
         "debt": "50%",
-        "foreign": "0.28%"
+        "foreign": "0.23%"
       },
       "fin": [
         {
@@ -276,14 +276,14 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 1209,
-      "changePct": -3.9,
+      "price": 1197,
+      "changePct": -0.25,
       "metrics": {
         "ROE": "-1.4%",
-        "PBR": "2.45",
+        "PBR": "2.42",
         "debt": "94%",
         "current": "96%",
-        "foreign": "0.51%"
+        "foreign": "0.46%"
       },
       "fin": [
         {
@@ -367,14 +367,14 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2550,
-      "changePct": 2.0,
+      "price": 2540,
+      "changePct": 0.4,
       "metrics": {
         "ROE": "0.9%",
         "PBR": "0.28",
-        "PER": "1.74",
+        "PER": "1.73",
         "debt": "53%",
-        "foreign": "1.05%"
+        "foreign": "1.06%"
       },
       "fin": [
         {
