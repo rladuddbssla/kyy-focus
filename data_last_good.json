@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-09-30 23:01",
-  "asOfUtc": "2026-09-30T23:01:37Z",
+  "asOf": "2026-10-01 02:11",
+  "asOfUtc": "2026-10-01T02:11:57Z",
   "source": "DART · 네이버",
   "health": {
     "dart": {
@@ -29,11 +29,11 @@
       "market": "KOSPI",
       "tag": "여성 이너웨어",
       "biz": "여성 이너웨어(속옷) 제조·유통 · 브랜드 비비안/샌디즈",
-      "price": 4055,
-      "changePct": 0.0,
+      "price": 3830,
+      "changePct": -5.55,
       "metrics": {
         "ROE": "-5.9%",
-        "PBR": "0.22",
+        "PBR": "0.21",
         "debt": "198%",
         "current": "82%",
         "foreign": "0.00%"
@@ -114,13 +114,13 @@
       "market": "KOSDAQ",
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
-      "price": 2905,
-      "changePct": 0.0,
+      "price": 3010,
+      "changePct": 3.61,
       "metrics": {
         "ROE": "-5.0%",
-        "PBR": "0.25",
+        "PBR": "0.26",
         "debt": "21%",
-        "foreign": "1.10%"
+        "foreign": "1.24%"
       },
       "fin": [
         {
@@ -210,14 +210,14 @@
       "market": "KOSPI",
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
-      "price": 5050,
-      "changePct": 0.0,
+      "price": 4935,
+      "changePct": -2.28,
       "metrics": {
         "ROE": "12.8%",
-        "PBR": "1.13",
-        "PER": "8.77",
+        "PBR": "1.11",
+        "PER": "8.57",
         "debt": "50%",
-        "foreign": "0.23%"
+        "foreign": "0.22%"
       },
       "fin": [
         {
@@ -276,14 +276,14 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 1205,
-      "changePct": 0.0,
+      "price": 1193,
+      "changePct": -0.67,
       "metrics": {
         "ROE": "-1.4%",
-        "PBR": "2.44",
+        "PBR": "2.41",
         "debt": "94%",
         "current": "96%",
-        "foreign": "0.46%"
+        "foreign": "0.45%"
       },
       "fin": [
         {
@@ -373,14 +373,14 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2620,
-      "changePct": 0.0,
+      "price": 2665,
+      "changePct": 3.09,
       "metrics": {
         "ROE": "0.9%",
         "PBR": "0.29",
-        "PER": "1.79",
+        "PER": "1.82",
         "debt": "53%",
-        "foreign": "1.06%"
+        "foreign": "1.09%"
       },
       "fin": [
         {
