@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-10-10 17:50",
-  "asOfUtc": "2026-10-10T17:50:16Z",
+  "asOf": "2026-10-10 21:38",
+  "asOfUtc": "2026-10-10T21:38:49Z",
   "source": "DART · 네이버",
   "health": {
     "dart": {
@@ -11,7 +11,7 @@
       },
       "since": "2026-10-08 13:22",
       "err": [
-        "corpCode: RuntimeError corpCode 응답이 ZIP 이 아님 → status=800 시스템 점검으로 인한  서비스가 중지 중입니다."
+        "corpCode: RuntimeError corpCode 응답이 ZIP 이 아님 → <!DOCTYPE html> <html> <head> <meta charset=\"UTF-8\" /> <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no\" /> <meta http-equiv=\"X-"
       ]
     },
     "naver": {
