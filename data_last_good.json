@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-10-11 22:51",
-  "asOfUtc": "2026-10-11T22:51:42Z",
+  "asOf": "2026-10-12 02:26",
+  "asOfUtc": "2026-10-12T02:26:18Z",
   "source": "DART · 네이버",
   "health": {
     "dart": {
@@ -29,11 +29,11 @@
       "market": "KOSPI",
       "tag": "여성 이너웨어",
       "biz": "여성 이너웨어(속옷) 제조·유통 · 브랜드 비비안/샌디즈",
-      "price": 3810,
-      "changePct": 2.56,
+      "price": 3640,
+      "changePct": -4.46,
       "metrics": {
         "ROE": "-5.9%",
-        "PBR": "0.21",
+        "PBR": "0.20",
         "debt": "198%",
         "current": "82%",
         "foreign": "0.00%"
@@ -108,13 +108,13 @@
       "market": "KOSDAQ",
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
-      "price": 2975,
-      "changePct": 1.54,
+      "price": 3070,
+      "changePct": 3.19,
       "metrics": {
         "ROE": "-5.0%",
-        "PBR": "0.26",
+        "PBR": "0.27",
         "debt": "21%",
-        "foreign": "1.19%"
+        "foreign": "1.21%"
       },
       "fin": [
         {
@@ -204,14 +204,14 @@
       "market": "KOSPI",
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
-      "price": 5610,
-      "changePct": 2.37,
+      "price": 5320,
+      "changePct": -4.14,
       "metrics": {
         "ROE": "12.8%",
-        "PBR": "1.26",
-        "PER": "9.74",
+        "PBR": "1.19",
+        "PER": "9.24",
         "debt": "50%",
-        "foreign": "0.26%"
+        "foreign": "0.25%"
       },
       "fin": [
         {
@@ -270,11 +270,11 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 1287,
-      "changePct": 3.79,
+      "price": 1280,
+      "changePct": -1.23,
       "metrics": {
         "ROE": "-1.4%",
-        "PBR": "2.61",
+        "PBR": "2.59",
         "debt": "94%",
         "current": "96%",
         "foreign": "0.85%"
@@ -367,12 +367,12 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2545,
-      "changePct": -4.14,
+      "price": 2645,
+      "changePct": 0.95,
       "metrics": {
         "ROE": "0.9%",
-        "PBR": "0.28",
-        "PER": "1.73",
+        "PBR": "0.29",
+        "PER": "1.80",
         "debt": "53%",
         "foreign": "1.09%"
       },
