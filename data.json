@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-10-22 22:21",
-  "asOfUtc": "2026-10-22T22:21:59Z",
+  "asOf": "2026-10-23 00:46",
+  "asOfUtc": "2026-10-23T00:46:43Z",
   "source": "DART · 네이버",
   "health": {
     "dart": {
@@ -29,11 +29,11 @@
       "market": "KOSPI",
       "tag": "여성 이너웨어",
       "biz": "여성 이너웨어(속옷) 제조·유통 · 브랜드 비비안/샌디즈",
-      "price": 3740,
-      "changePct": -0.27,
+      "price": 3640,
+      "changePct": -2.67,
       "metrics": {
         "ROE": "-5.9%",
-        "PBR": "0.21",
+        "PBR": "0.20",
         "debt": "198%",
         "current": "82%",
         "foreign": "0.00%"
@@ -108,8 +108,8 @@
       "market": "KOSDAQ",
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
-      "price": 2945,
-      "changePct": 1.2,
+      "price": 2990,
+      "changePct": 1.53,
       "metrics": {
         "ROE": "-5.0%",
         "PBR": "0.26",
@@ -198,12 +198,12 @@
       "market": "KOSPI",
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
-      "price": 5540,
-      "changePct": 2.03,
+      "price": 5410,
+      "changePct": -1.28,
       "metrics": {
         "ROE": "12.8%",
-        "PBR": "1.24",
-        "PER": "9.62",
+        "PBR": "1.22",
+        "PER": "9.39",
         "debt": "50%",
         "foreign": "0.23%"
       },
@@ -264,14 +264,14 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 1033,
-      "changePct": -2.55,
+      "price": 992,
+      "changePct": -6.06,
       "metrics": {
         "ROE": "-1.4%",
-        "PBR": "2.09",
+        "PBR": "2.01",
         "debt": "94%",
         "current": "96%",
-        "foreign": "0.97%"
+        "foreign": "1.00%"
       },
       "fin": [
         {
@@ -361,12 +361,12 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2560,
-      "changePct": 0.0,
+      "price": 2515,
+      "changePct": -0.4,
       "metrics": {
         "ROE": "0.9%",
         "PBR": "0.28",
-        "PER": "1.75",
+        "PER": "1.71",
         "debt": "53%",
         "foreign": "1.05%"
       },
