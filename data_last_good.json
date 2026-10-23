@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-10-23 06:06",
-  "asOfUtc": "2026-10-23T06:06:01Z",
+  "asOf": "2026-10-23 11:37",
+  "asOfUtc": "2026-10-23T11:37:37Z",
   "source": "DART · 네이버",
   "health": {
     "dart": {
@@ -29,11 +29,11 @@
       "market": "KOSPI",
       "tag": "여성 이너웨어",
       "biz": "여성 이너웨어(속옷) 제조·유통 · 브랜드 비비안/샌디즈",
-      "price": 3620,
-      "changePct": -3.21,
+      "price": 3500,
+      "changePct": -6.42,
       "metrics": {
         "ROE": "-5.9%",
-        "PBR": "0.20",
+        "PBR": "0.19",
         "debt": "198%",
         "current": "82%",
         "foreign": "0.00%"
@@ -108,8 +108,8 @@
       "market": "KOSDAQ",
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
-      "price": 2940,
-      "changePct": -0.17,
+      "price": 3025,
+      "changePct": 2.72,
       "metrics": {
         "ROE": "-5.0%",
         "PBR": "0.26",
@@ -192,12 +192,12 @@
       "market": "KOSPI",
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
-      "price": 5400,
-      "changePct": -1.46,
+      "price": 5520,
+      "changePct": 0.73,
       "metrics": {
         "ROE": "12.8%",
-        "PBR": "1.21",
-        "PER": "9.38",
+        "PBR": "1.24",
+        "PER": "9.58",
         "debt": "50%",
         "foreign": "0.23%"
       },
@@ -258,11 +258,11 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 970,
-      "changePct": -8.14,
+      "price": 994,
+      "changePct": -5.87,
       "metrics": {
         "ROE": "-1.4%",
-        "PBR": "1.96",
+        "PBR": "2.01",
         "debt": "94%",
         "current": "96%",
         "foreign": "1.00%"
@@ -355,12 +355,12 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2535,
-      "changePct": 0.4,
+      "price": 2580,
+      "changePct": 2.18,
       "metrics": {
         "ROE": "0.9%",
         "PBR": "0.28",
-        "PER": "1.73",
+        "PER": "1.76",
         "debt": "53%",
         "foreign": "1.05%"
       },
