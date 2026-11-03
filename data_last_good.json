@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-11-03 07:57",
-  "asOfUtc": "2026-11-03T07:57:16Z",
+  "asOf": "2026-11-03 16:15",
+  "asOfUtc": "2026-11-03T16:15:59Z",
   "source": "DART · 네이버",
   "health": {
     "dart": {
@@ -252,11 +252,11 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 1005,
-      "changePct": -0.2,
+      "price": 1006,
+      "changePct": -0.1,
       "metrics": {
         "ROE": "-1.4%",
-        "PBR": "2.03",
+        "PBR": "2.04",
         "debt": "94%",
         "current": "96%",
         "foreign": "0.80%"
@@ -349,12 +349,12 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2360,
-      "changePct": 0.85,
+      "price": 2350,
+      "changePct": 0.43,
       "metrics": {
         "ROE": "0.9%",
         "PBR": "0.26",
-        "PER": "1.61",
+        "PER": "1.60",
         "debt": "53%",
         "foreign": "1.02%"
       },
