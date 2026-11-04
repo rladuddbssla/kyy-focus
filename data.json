@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-11-03 21:44",
-  "asOfUtc": "2026-11-03T21:44:54Z",
+  "asOf": "2026-11-04 02:21",
+  "asOfUtc": "2026-11-04T02:21:50Z",
   "source": "DART · 네이버",
   "health": {
     "dart": {
@@ -29,8 +29,8 @@
       "market": "KOSPI",
       "tag": "여성 이너웨어",
       "biz": "여성 이너웨어(속옷) 제조·유통 · 브랜드 비비안/샌디즈",
-      "price": 3390,
-      "changePct": -0.88,
+      "price": 3440,
+      "changePct": 1.47,
       "metrics": {
         "ROE": "-5.9%",
         "PBR": "0.19",
@@ -108,13 +108,13 @@
       "market": "KOSDAQ",
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
-      "price": 3020,
-      "changePct": 0.0,
+      "price": 3002,
+      "changePct": -0.6,
       "metrics": {
         "ROE": "-5.0%",
         "PBR": "0.26",
         "debt": "21%",
-        "foreign": "1.15%"
+        "foreign": "1.13%"
       },
       "fin": [
         {
@@ -192,14 +192,14 @@
       "market": "KOSPI",
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
-      "price": 5200,
-      "changePct": 2.56,
+      "price": 4995,
+      "changePct": -0.89,
       "metrics": {
         "ROE": "12.8%",
-        "PBR": "1.17",
-        "PER": "9.03",
+        "PBR": "1.12",
+        "PER": "8.67",
         "debt": "50%",
-        "foreign": "0.24%"
+        "foreign": "0.25%"
       },
       "fin": [
         {
@@ -259,7 +259,7 @@
         "PBR": "2.04",
         "debt": "94%",
         "current": "96%",
-        "foreign": "0.80%"
+        "foreign": "0.93%"
       },
       "fin": [
         {
@@ -349,14 +349,14 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2350,
-      "changePct": 0.43,
+      "price": 2285,
+      "changePct": -0.65,
       "metrics": {
         "ROE": "0.9%",
-        "PBR": "0.26",
-        "PER": "1.60",
+        "PBR": "0.25",
+        "PER": "1.56",
         "debt": "53%",
-        "foreign": "1.02%"
+        "foreign": "1.01%"
       },
       "fin": [
         {
