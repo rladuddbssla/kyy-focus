@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-11-05 19:57",
-  "asOfUtc": "2026-11-05T19:57:37Z",
+  "asOf": "2026-11-06 01:01",
+  "asOfUtc": "2026-11-06T01:01:33Z",
   "source": "DART · 네이버",
   "health": {
     "dart": {
@@ -29,11 +29,11 @@
       "market": "KOSPI",
       "tag": "여성 이너웨어",
       "biz": "여성 이너웨어(속옷) 제조·유통 · 브랜드 비비안/샌디즈",
-      "price": 3415,
-      "changePct": -3.8,
+      "price": 3215,
+      "changePct": -5.86,
       "metrics": {
         "ROE": "-5.9%",
-        "PBR": "0.19",
+        "PBR": "0.18",
         "debt": "198%",
         "current": "82%",
         "foreign": "0.00%"
@@ -108,13 +108,13 @@
       "market": "KOSDAQ",
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
-      "price": 3115,
-      "changePct": -3.41,
+      "price": 3055,
+      "changePct": -1.93,
       "metrics": {
         "ROE": "-5.0%",
         "PBR": "0.27",
         "debt": "21%",
-        "foreign": "1.06%"
+        "foreign": "1.02%"
       },
       "fin": [
         {
@@ -192,12 +192,12 @@
       "market": "KOSPI",
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
-      "price": 4995,
-      "changePct": 0.5,
+      "price": 4910,
+      "changePct": -1.21,
       "metrics": {
         "ROE": "12.8%",
-        "PBR": "1.12",
-        "PER": "8.67",
+        "PBR": "1.10",
+        "PER": "8.52",
         "debt": "50%",
         "foreign": "0.24%"
       },
@@ -252,14 +252,14 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 1016,
-      "changePct": -5.4,
+      "price": 982,
+      "changePct": -4.57,
       "metrics": {
         "ROE": "-1.4%",
-        "PBR": "2.06",
+        "PBR": "1.99",
         "debt": "94%",
         "current": "96%",
-        "foreign": "1.18%"
+        "foreign": "1.21%"
       },
       "fin": [
         {
@@ -307,12 +307,6 @@
           "title": "주식등의대량보유상황보고서(약식)",
           "plain": "지분 5% 이상 주주의 보유 지분이 변동됐다는 신고(누가 사고 팔았는지).",
           "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261013000360"
-        },
-        {
-          "date": "2026-10-06",
-          "title": "주주명부폐쇄기간또는기준일설정",
-          "plain": "정기·수시 공시 사항. 원문에서 상세 내용을 확인하세요.",
-          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261006900440"
         }
       ],
       "news": [
@@ -349,12 +343,12 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2340,
-      "changePct": 1.74,
+      "price": 2310,
+      "changePct": -1.7,
       "metrics": {
         "ROE": "0.9%",
-        "PBR": "0.26",
-        "PER": "1.60",
+        "PBR": "0.25",
+        "PER": "1.57",
         "debt": "53%",
         "foreign": "1.01%"
       },
