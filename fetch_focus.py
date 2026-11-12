@@ -843,7 +843,7 @@ def build_health(items, corp_map, prev):
             "ok": ok,
             "got": got,
             "since": None if ok else (prev_since or now),   # 실패 시작 시각(연속 실패면 유지)
-            "err": sorted(set(fails))[:3],
+            "err": [re.sub(r"crtfc_key=[^&\s)']+", "crtfc_key=***", x) for x in sorted(set(fails))[:3]],
         }
     return out, dart_ok, naver_ok
 
