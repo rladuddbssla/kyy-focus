@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-11-22 18:30",
-  "asOfUtc": "2026-11-22T18:30:04Z",
+  "asOf": "2026-11-23 00:15",
+  "asOfUtc": "2026-11-23T00:15:33Z",
   "source": "DART · 네이버",
   "health": {
     "dart": {
@@ -29,8 +29,8 @@
       "market": "KOSPI",
       "tag": "여성 이너웨어",
       "biz": "여성 이너웨어(속옷) 제조·유통 · 브랜드 비비안/샌디즈",
-      "price": 2965,
-      "changePct": -0.34,
+      "price": 2905,
+      "changePct": -2.02,
       "metrics": {
         "ROE": "-5.9%",
         "PBR": "0.16",
@@ -114,8 +114,8 @@
       "market": "KOSDAQ",
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
-      "price": 2975,
-      "changePct": -1.49,
+      "price": 2950,
+      "changePct": -0.84,
       "metrics": {
         "ROE": "-3.5%",
         "PBR": "0.26",
@@ -192,12 +192,12 @@
       "market": "KOSPI",
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
-      "price": 4815,
-      "changePct": -0.1,
+      "price": 4745,
+      "changePct": -0.52,
       "metrics": {
         "ROE": "-9.5%",
-        "PBR": "1.18",
-        "PER": "24.44",
+        "PBR": "1.16",
+        "PER": "24.09",
         "debt": "59%",
         "foreign": "0.25%"
       },
@@ -265,14 +265,14 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 956,
-      "changePct": 4.94,
+      "price": 919,
+      "changePct": -4.67,
       "metrics": {
         "ROE": "9.4%",
-        "PBR": "1.94",
-        "PER": "119.50",
+        "PBR": "1.60",
+        "PER": "114.88",
         "debt": "62%",
-        "foreign": "0.74%"
+        "foreign": "0.56%"
       },
       "fin": [
         {
@@ -362,12 +362,12 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2565,
+      "price": 2555,
       "changePct": -0.58,
       "metrics": {
         "ROE": "4.8%",
         "PBR": "0.27",
-        "PER": "1.48",
+        "PER": "1.47",
         "debt": "34%",
         "foreign": "0.95%"
       },
