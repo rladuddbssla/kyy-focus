@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-11-25 19:59",
-  "asOfUtc": "2026-11-25T19:59:13Z",
+  "asOf": "2026-11-26 02:48",
+  "asOfUtc": "2026-11-26T02:48:29Z",
   "source": "DART · 네이버",
   "health": {
     "dart": {
@@ -29,8 +29,8 @@
       "market": "KOSPI",
       "tag": "여성 이너웨어",
       "biz": "여성 이너웨어(속옷) 제조·유통 · 브랜드 비비안/샌디즈",
-      "price": 2750,
-      "changePct": -3.68,
+      "price": 2705,
+      "changePct": -1.64,
       "metrics": {
         "ROE": "-5.9%",
         "PBR": "0.16",
@@ -114,13 +114,13 @@
       "market": "KOSDAQ",
       "tag": "엔터·미디어",
       "biz": "종합 엔터테인먼트·미디어 · 아티스트/공연 IP·AI 쇼비즈니스",
-      "price": 2955,
-      "changePct": -0.84,
+      "price": 2925,
+      "changePct": -1.02,
       "metrics": {
         "ROE": "-3.5%",
         "PBR": "0.26",
         "debt": "30%",
-        "foreign": "1.02%"
+        "foreign": "0.98%"
       },
       "fin": [
         {
@@ -192,12 +192,12 @@
       "market": "KOSPI",
       "tag": "헬스케어·코스메틱",
       "biz": "AI 기반 헬스케어·코스메틱 · 차바이오텍(차케어스) 편입",
-      "price": 4850,
-      "changePct": -1.92,
+      "price": 4860,
+      "changePct": -0.82,
       "metrics": {
         "ROE": "-9.5%",
         "PBR": "1.19",
-        "PER": "24.62",
+        "PER": "24.67",
         "debt": "59%",
         "foreign": "0.26%"
       },
@@ -265,14 +265,14 @@
       "market": "KOSDAQ",
       "tag": "AI·빅데이터",
       "biz": "AI·빅데이터 데이터 솔루션/컨설팅(B2B·공공) · 스테이블코인 결제 진출",
-      "price": 903,
-      "changePct": -6.13,
+      "price": 871,
+      "changePct": -1.8,
       "metrics": {
         "ROE": "9.4%",
-        "PBR": "1.57",
-        "PER": "112.88",
+        "PBR": "1.51",
+        "PER": "108.88",
         "debt": "62%",
-        "foreign": "0.47%"
+        "foreign": "0.43%"
       },
       "fin": [
         {
@@ -362,12 +362,12 @@
       "market": "KOSDAQ",
       "tag": "IT·클라우드",
       "biz": "IT 솔루션·클라우드 인프라 공급 · 시스템 통합(SI)",
-      "price": 2535,
-      "changePct": 0.2,
+      "price": 2490,
+      "changePct": -0.4,
       "metrics": {
         "ROE": "4.8%",
         "PBR": "0.27",
-        "PER": "1.46",
+        "PER": "1.43",
         "debt": "34%",
         "foreign": "0.93%"
       },
